@@ -8,13 +8,10 @@ public class HelloController {
     @FXML
     private Label welcomeText;
 
-    private Product product;
 
     @FXML
     protected void initialize(){
         System.out.println("HelloController.initialize()");
-        ProductFactory boormachineFactory = new BoormachineFactory();
-        this.product = boormachineFactory.createProduct();
     }
 
     @FXML
@@ -24,10 +21,6 @@ public class HelloController {
     }
 
     private void doSomething() {
-//        ProductFactory boormachineFactory = new BoormachineFactory();
-//        Product boormachine = boormachineFactory.createProduct();
-//        Stage stage = (Stage) welcomeText.getScene().getWindow();
-        product.drawInputScreen();
 
     }
 }
