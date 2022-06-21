@@ -13,8 +13,8 @@ public class Boormachine extends Product {
     private String merk;
     private String type;
 
-    public Boormachine(String naam) {
-        super(naam);
+    public Boormachine(String naam, String beschrijving) {
+        super(naam, beschrijving);
     }
 
     @Override

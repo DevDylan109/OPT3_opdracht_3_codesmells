@@ -13,6 +13,8 @@ public class LoginController {
 
     private Login login;
     private Medewerker medewerker;
+    private SceneSwitcher switcher;
+    private FXMLLoader loader;
     @FXML
     private TextField Gebruikersnaam;
     @FXML
@@ -21,8 +23,9 @@ public class LoginController {
 
     @FXML
     protected void initialize(){
-        System.out.println("test");
         login = new Login();
+        switcher = new SceneSwitcher();
+
     }
 
     @FXML
@@ -30,10 +33,13 @@ public class LoginController {
         LogGebruikerIn();
     }
 
+
     private void LogGebruikerIn() throws IOException {
         String Gebruikersnaam = this.Gebruikersnaam.getText();
         String Wachtwoord = this.Wachtwoord.getText();
+
         medewerker = login.Autoriseer(Gebruikersnaam, Wachtwoord);
+
         if(medewerker != null){
             System.out.println("Gebruiker is ingelogd");
             switchToScene2();
@@ -41,23 +47,23 @@ public class LoginController {
         else{
             System.out.println("Gebruiker is niet ingelogd");
         }
-
-
     }
 
+
     private void switchToScene2() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+        loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("hoofdmenu-view.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
+
+        switcher.setLoader(loader);
+        switcher.setNode(Gebruikersnaam);
+        switcher.PrepareNewStage();
 
         //acces the controller and call a method
         HoofdmenuController controller = loader.getController();
-        controller.initMedewerker(medewerker);
+        controller.initialize(medewerker);
 
-        //switch scenes
-        stage.setScene(scene);
-        stage.show();
+        switcher.CallStage();
+
+
     }
 }

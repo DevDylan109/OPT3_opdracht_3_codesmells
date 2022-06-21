@@ -13,8 +13,8 @@ public class VrachtAuto extends Product {
     private int gewicht;
     private int laadvermogen;
 
-    public VrachtAuto(String naam) {
-        super(naam);
+    public VrachtAuto(String naam, String beschrijving) {
+        super(naam, beschrijving);
 
     }
 

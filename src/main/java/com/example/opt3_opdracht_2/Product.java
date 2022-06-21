@@ -9,7 +9,7 @@ public abstract class Product {
 
     private Huurinfo huurinformatie;
 
-    public Product(String naam) {
+    public Product(String naam, String beschrijving) {
         this.naam = naam;
         huurinformatie = new Huurinfo();
     }

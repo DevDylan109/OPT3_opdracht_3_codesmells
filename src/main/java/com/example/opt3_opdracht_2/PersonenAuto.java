@@ -13,8 +13,8 @@ public class PersonenAuto extends Product {
     private String merk;
     private int gewicht;
 
-    public PersonenAuto(String naam) {
-        super(naam);
+    public PersonenAuto(String naam, String beschrijving) {
+        super(naam, beschrijving);
     }
 
     @Override
