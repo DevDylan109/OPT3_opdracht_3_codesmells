@@ -1,7 +1,13 @@
 package com.example.opt3_opdracht_2;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class LoginController {
 
@@ -20,22 +26,32 @@ public class LoginController {
     }
 
     @FXML
-    protected void onLoginButtonClick() {
+    protected void onLoginButtonClick() throws IOException {
         LogGebruikerIn();
     }
 
-    private void LogGebruikerIn() {
+    private void LogGebruikerIn() throws IOException {
         String Gebruikersnaam = this.Gebruikersnaam.getText();
         String Wachtwoord = this.Wachtwoord.getText();
         medewerker = login.Autoriseer(Gebruikersnaam, Wachtwoord);
         if(medewerker != null){
             System.out.println("Gebruiker is ingelogd");
+            switchToScene2();
         }
         else{
             System.out.println("Gebruiker is niet ingelogd");
-//            switchToScene2();
         }
 
 
+    }
+
+    private void switchToScene2() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("hoofdmenu-view.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) Gebruikersnaam.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 }
