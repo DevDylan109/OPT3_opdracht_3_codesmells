@@ -1,5 +1,7 @@
 package com.example.opt3_opdracht_2;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -27,7 +29,7 @@ public class OverzichtController {
         this.medewerker = medewerker;
         this.repository = new Repository();
         setMedewerkersLabel();
-        //initProductList
+        initProductList();
         initProductView();
     }
 
@@ -37,14 +39,16 @@ public class OverzichtController {
     }
 
     private void initProductList(){
-        //get data from Repo
+        ObservableList<Product> products = FXCollections.observableArrayList();
+        products.setAll(repository.getProducts());
+        ProductenList.setItems(products);
     }
 
     private void initProductView(){
         ProductenList = new TableView<>();
         SoortColumn.setCellValueFactory(new PropertyValueFactory<>("naam"));
-        SoortColumn.setCellValueFactory(new PropertyValueFactory<>("beschrijving"));
-        SoortColumn.setCellValueFactory(new PropertyValueFactory<>("prijs"));
+        BeschrijvingColumn.setCellValueFactory(new PropertyValueFactory<>("beschrijving"));
+        StatusColumn.setCellValueFactory(new PropertyValueFactory<>("prijs"));
     }
 
 }

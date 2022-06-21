@@ -32,7 +32,7 @@ public class HoofdmenuController {
 
     @FXML
     protected void onOverzichtBtnClick() throws IOException {
-        setLoader("overzicht-view.fxml");
+        //setLoader("overzicht-view.fxml");
         NaarOverzicht();
     }
     @FXML
@@ -46,12 +46,12 @@ public class HoofdmenuController {
     }
 
 
-    private void setLoader(String fxmlPath){
-        loader.setLocation(getClass().getResource(fxmlPath));
-    }
+//    private void setLoader(String fxmlPath){
+//        loader.setLocation(getClass().getResource(fxmlPath));
+//    }
 
     private void NaarOverzicht() throws IOException {
-        setSceneSwitch();
+        setSceneSwitch("overzicht-view.fxml");
         OverzichtController controller = loader.getController();
         controller.initialize(medewerker);
         SwitchScenes();
@@ -59,15 +59,16 @@ public class HoofdmenuController {
 
 
     private void NaarBeheer() throws IOException {
-        setSceneSwitch();
-        OverzichtController controller = loader.getController();
-        //controller.initialize();
-        SwitchScenes();
+//        setSceneSwitch();
+//        OverzichtController controller = loader.getController();
+//        controller.initialize();
+//        SwitchScenes();
     }
 
 
-    private void setSceneSwitch() throws IOException {
+    private void setSceneSwitch(String fxmlPath) throws IOException {
         loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(fxmlPath));
         SceneSwitch.setLoader(loader);
         SceneSwitch.setNode(MedewerkersLabel);
         SceneSwitch.PrepareStage();
