@@ -5,49 +5,53 @@ import java.util.ArrayList;
 public class Login {
 
     private ArrayList<Medewerker> MedewerkersList;
-    private Medewerker currentlyLoggedIn;
+    private Medewerker HuidigeMedewerker;
 
-    public Login(Repository repository){
+    private boolean isAlreadyLoggedIn;
+
+    public Login(){
+        Repository repository = new Repository();
         this.MedewerkersList = repository.getMedewerkers();
     }
 
-    public boolean CheckAlreadyLoggedIn(String GEBRUIKERSNAAM){
-        if(currentlyLoggedIn == null){
-            return false;
+    private void IsAlIngelogd(String GEBRUIKERSNAAM){
+        if(HuidigeMedewerker == null){
+            isAlreadyLoggedIn = false;
         }
-        else if(currentlyLoggedIn.getGebruikersnaam().equals(GEBRUIKERSNAAM)){
-            return true;
+        else if(HuidigeMedewerker.getGebruikersnaam().equals(GEBRUIKERSNAAM)){
+            isAlreadyLoggedIn = true;
         }
         else{
-            return false;
+            isAlreadyLoggedIn = false;
         }
     }
 
-    public Medewerker LogUserIn(String GEBRUIKERSNAAM, String WACHTWOORD, boolean AlreadyLoggedIn){
+    public Medewerker Autoriseer(String GEBRUIKERSNAAM, String WACHTWOORD){
+        IsAlIngelogd(GEBRUIKERSNAAM);
         String VerwachteGebruikersnaam;
         String VerwachteWachtwoord;
-        Medewerker HuidigeMedewerker = null;
+        Medewerker AutoriserendeMedewerker = null;
 
-        if(!AlreadyLoggedIn){
+        if(!isAlreadyLoggedIn){ //Bij True, return een Medewerker, Bij false return null
             for(Medewerker Medewerker : MedewerkersList){
                 VerwachteGebruikersnaam = Medewerker.getGebruikersnaam();
                 VerwachteWachtwoord = Medewerker.getWachtwoord();
 
                 if(VerwachteGebruikersnaam.equals(GEBRUIKERSNAAM) && VerwachteWachtwoord.equals(WACHTWOORD)){
+                    AutoriserendeMedewerker = Medewerker;
                     HuidigeMedewerker = Medewerker;
-                    currentlyLoggedIn = Medewerker;
                 }
             }
         }
-        return HuidigeMedewerker; //Bij True, return een Medewerker, Bij false return null
+        return AutoriserendeMedewerker;
     }
 
-    public Medewerker getCurrentlyLoggedIn() {
-        return currentlyLoggedIn;
+    public Medewerker getHuidigeMedewerker() {
+        return HuidigeMedewerker;
     }
 
-    public void clearCurrentlyLoggedIn() {
-        this.currentlyLoggedIn = null;
+    public void clearHuidigeMedewerker() {
+        this.HuidigeMedewerker = null;
     }
 }
 
