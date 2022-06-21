@@ -48,7 +48,7 @@ public class OverzichtController {
         ProductenList = new TableView<>();
         SoortColumn.setCellValueFactory(new PropertyValueFactory<>("naam"));
         BeschrijvingColumn.setCellValueFactory(new PropertyValueFactory<>("beschrijving"));
-        StatusColumn.setCellValueFactory(new PropertyValueFactory<>("prijs"));
+        StatusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
     }
 
 }

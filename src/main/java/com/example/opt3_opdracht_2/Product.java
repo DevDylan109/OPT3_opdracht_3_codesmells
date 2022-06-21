@@ -5,12 +5,15 @@ import javafx.stage.Stage;
 public abstract class Product {
     private String naam;
     private String beschrijving;
+    private String status;
     private double prijs;
 
     private Huurinfo huurinformatie;
 
     public Product(String naam, String beschrijving) {
         this.naam = naam;
+        this.status = "op voorraad";
+        this.beschrijving = beschrijving;
         huurinformatie = new Huurinfo();
     }
 
@@ -42,6 +45,10 @@ public abstract class Product {
 
     public Huurinfo getHuurgegevens() {
         return huurinformatie;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
     public void setHuurgegevens(Huurinfo huurcontract) {
