@@ -4,8 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class OverzichtController {
+
+    private Medewerker medewerker;
+    private Repository repository;
     @FXML
     private Label MedewerkersLabel;
 
@@ -18,16 +22,29 @@ public class OverzichtController {
     @FXML
     private TableColumn<Product, String> StatusColumn;
 
-    @FXML
-    protected void initialize(){
-        //test
+
+    protected void initialize(Medewerker medewerker){
+        this.medewerker = medewerker;
+        this.repository = new Repository();
+        setMedewerkersLabel();
+        //initProductList
+        initProductView();
     }
 
-    private void initRepository(){
-
+    private void setMedewerkersLabel(){
+        String Text = medewerker.getNaam();
+        this.MedewerkersLabel.setText(Text);
     }
+
     private void initProductList(){
+        //get data from Repo
+    }
 
+    private void initProductView(){
+        ProductenList = new TableView<>();
+        SoortColumn.setCellValueFactory(new PropertyValueFactory<>("naam"));
+        SoortColumn.setCellValueFactory(new PropertyValueFactory<>("beschrijving"));
+        SoortColumn.setCellValueFactory(new PropertyValueFactory<>("prijs"));
     }
 
 }

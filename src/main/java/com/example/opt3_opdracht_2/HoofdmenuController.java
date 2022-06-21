@@ -53,7 +53,7 @@ public class HoofdmenuController {
     private void NaarOverzicht() throws IOException {
         setSceneSwitch();
         OverzichtController controller = loader.getController();
-        controller.initialize();
+        controller.initialize(medewerker);
         SwitchScenes();
     }
 
@@ -61,7 +61,7 @@ public class HoofdmenuController {
     private void NaarBeheer() throws IOException {
         setSceneSwitch();
         OverzichtController controller = loader.getController();
-        controller.initialize();
+        //controller.initialize();
         SwitchScenes();
     }
 
