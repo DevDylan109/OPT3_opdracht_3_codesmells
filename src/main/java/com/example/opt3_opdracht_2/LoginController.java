@@ -1,11 +1,9 @@
 package com.example.opt3_opdracht_2;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
-public class HelloController {
+public class LoginController {
 
     private Login login;
     private Medewerker medewerker;
