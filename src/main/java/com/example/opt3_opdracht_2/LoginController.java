@@ -50,11 +50,13 @@ public class LoginController {
         loader.setLocation(getClass().getResource("hoofdmenu-view.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        Stage stage = (Stage) Gebruikersnaam.getScene().getWindow();
+        Stage stage = new Stage();
 
         //acces the controller and call a method
         HoofdmenuController controller = loader.getController();
         controller.initMedewerker(medewerker);
+
+        //switch scenes
         stage.setScene(scene);
         stage.show();
     }
