@@ -20,9 +20,9 @@
       </AnchorPane>
       <AnchorPane layoutX="194.0" layoutY="18.0" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button fx:id="OverzichtButton" layoutX="47.0" layoutY="38.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" text="Overzicht" />
-            <Button fx:id="BeheerButton" layoutX="47.0" layoutY="85.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" text="Beheer" />
-            <Button fx:id="LoguitButton" layoutX="47.0" layoutY="131.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" text="Uitloggen" />
+            <Button layoutX="47.0" layoutY="38.0" mnemonicParsing="false" onAction="#onOverzichtBtnClick" prefHeight="30.0" prefWidth="106.0" text="Overzicht" />
+            <Button layoutX="47.0" layoutY="85.0" mnemonicParsing="false" onAction="#onBeheerBtnClick" prefHeight="30.0" prefWidth="106.0" text="Beheer" />
+            <Button layoutX="47.0" layoutY="131.0" mnemonicParsing="false" onAction="#onUitloggenBtnClick" prefHeight="30.0" prefWidth="106.0" text="Uitloggen" />
          </children>
       </AnchorPane>
    </children>

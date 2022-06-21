@@ -11,14 +11,6 @@ public class HoofdmenuController {
     @FXML
     private Label MedewerkersLabel;
 
-    @FXML
-    private Button OverzichtButton;
-
-    @FXML
-    private Button BeheerButton;
-
-    @FXML
-    private Button LoguitButton;
 
 
 
@@ -30,6 +22,20 @@ public class HoofdmenuController {
     private void initLabel(){
         MedewerkersLabel.setText("Welcome: " + medewerker.getNaam());
     }
+
+    @FXML
+    protected void onOverzichtBtnClick(){
+        //open new scene
+    }
+    @FXML
+    protected void onBeheerBtnClick(){
+        //open new scene
+    }
+    @FXML
+    protected void onUitloggenBtnClick(){
+        //open new scene
+    }
+
 
 
 
