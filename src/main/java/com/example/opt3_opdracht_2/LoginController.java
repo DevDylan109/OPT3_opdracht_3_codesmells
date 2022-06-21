@@ -51,6 +51,10 @@ public class LoginController {
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) Gebruikersnaam.getScene().getWindow();
+
+        //acces the controller and call a method
+        HoofdmenuController controller = loader.getController();
+        controller.initMedewerker(medewerker);
         stage.setScene(scene);
         stage.show();
     }
