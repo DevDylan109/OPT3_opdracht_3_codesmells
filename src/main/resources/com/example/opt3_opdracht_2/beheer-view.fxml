@@ -23,6 +23,6 @@
         </columns>
       </TableView>
       <Button fx:id="createProductBtn" layoutX="300.0" layoutY="185.0" mnemonicParsing="false" onAction="#OnCreateBtnClick" text="createProduct" />
-      <Button fx:id="addProductBtn" layoutX="305.0" layoutY="259.0" mnemonicParsing="false" onAction="#OnPrintBtnClick" text="addProduct" />
+      <Button fx:id="addProductBtn" layoutX="305.0" layoutY="259.0" mnemonicParsing="false" onAction="#OnAddBtnClick" text="addProduct" />
    </children>
 </AnchorPane>

@@ -30,22 +30,19 @@ public class BeheerController {
         this.medewerker = medewerker;
         this.productList = productList;
         setLabel();
-        doSomething();
+        setFactoryView();
     }
 
     private void setLabel(){
         MedewerkersLabel.setText("Beheerder: " + medewerker.getNaam());
     }
 
-    private void doSomething(){
+    private void setFactoryView(){
         Factories factories = new Factories();
         ObservableList<ProductFactory> factoryList = FXCollections.observableArrayList();
         factoryList.setAll(factories.getFactoryList());
         FactoryView.setItems(factoryList);
-
         Soort.setCellValueFactory(new PropertyValueFactory<>("FactoryName"));
-
-
     }
 
     @FXML
@@ -58,7 +55,7 @@ public class BeheerController {
     }
 
     @FXML
-    protected void OnPrintBtnClick(){
+    protected void OnAddBtnClick(){
         System.out.println(product.printDetails());
         productList.addProduct(product);
     }
