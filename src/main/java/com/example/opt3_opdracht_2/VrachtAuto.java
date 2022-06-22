@@ -29,6 +29,7 @@ public class VrachtAuto extends Product {
 
         vBox.getChildren().add(new TextField("gewicht"));
         vBox.getChildren().add(new TextField("laadvermogen"));
+        vBox.getChildren().add(new TextField("beschrijving"));
 
         Button button = new Button ("setText");
         button.setOnAction (new EventHandler<ActionEvent>() {
@@ -36,6 +37,8 @@ public class VrachtAuto extends Product {
             public void handle(ActionEvent event) {
                 gewicht = Integer.parseInt(((TextField) vBox.getChildren().get(0)).getText());
                 laadvermogen = Integer.parseInt(((TextField) vBox.getChildren().get(1)).getText());
+                setBeschrijving(((TextField) vBox.getChildren().get(2)).getText());
+                stage.close();
             }
         });
         vBox.getChildren().add(button);

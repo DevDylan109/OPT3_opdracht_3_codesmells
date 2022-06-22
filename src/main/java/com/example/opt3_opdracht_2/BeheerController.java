@@ -18,6 +18,8 @@ public class BeheerController {
     @FXML
     private Button createProductBtn;
     @FXML
+    private Button addProductBtn;
+    @FXML
     private Label MedewerkersLabel;
     @FXML
     private TableView<ProductFactory> FactoryView;
@@ -52,12 +54,12 @@ public class BeheerController {
         factory = FactoryView.getSelectionModel().getSelectedItem();
         product = factory.createProduct();
         product.drawInputScreen();
-        productList.addProduct(product);
-
+        addProductBtn.setText("add: " + product.getNaam());
     }
 
     @FXML
     protected void OnPrintBtnClick(){
         System.out.println(product.printDetails());
+        productList.addProduct(product);
     }
 }

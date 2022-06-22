@@ -28,6 +28,7 @@ public class PersonenAuto extends Product {
 
         vBox.getChildren().add(new TextField("Merk"));
         vBox.getChildren().add(new TextField("Gewicht"));
+        vBox.getChildren().add(new TextField("Beschrijving"));
 
         Button button = new Button ("setText");
         button.setOnAction (new EventHandler<ActionEvent>() {
@@ -35,6 +36,8 @@ public class PersonenAuto extends Product {
             public void handle(ActionEvent event) {
                 merk = ((TextField) vBox.getChildren().get(0)).getText();
                 gewicht = Integer.parseInt(((TextField) vBox.getChildren().get(1)).getText());
+                setBeschrijving(((TextField) vBox.getChildren().get(2)).getText());
+                stage.close();
             }
         });
         vBox.getChildren().add(button);
