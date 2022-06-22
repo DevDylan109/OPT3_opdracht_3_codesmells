@@ -1,8 +1,11 @@
 package com.example.opt3_opdracht_2;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
 
 public class VerhuurController {
 
@@ -12,6 +15,8 @@ public class VerhuurController {
     private Huurinfo huurinfo;
     private int dagen;
     private Klant klant;
+    private FXMLLoader loader;
+    private SceneSwitcher switcher;
 
     @FXML
     private TextArea DetailsArea;
@@ -34,6 +39,7 @@ public class VerhuurController {
         this.medewerker = medewerker;
         this.productList = productlist;
         this.product = product;
+        this.switcher = new SceneSwitcher();
         initHuurinfo();
         setDetailsArea();
         showVerhuurArea();
@@ -53,7 +59,6 @@ public class VerhuurController {
         product.setVerzekerd(VerzekerBtn.isSelected());
         product.berekenPrijs();
         product.setStatus("verhuurd");
-        setProductList();
     }
 
     private void setProductList(){
@@ -62,6 +67,7 @@ public class VerhuurController {
 
     private void showVerhuurArea(){
         String status = product.getStatus();
+
         if(status.equals("verhuurd")){
             VerhuurArea.setVisible(true);
             setVerhuurArea();
@@ -82,6 +88,31 @@ public class VerhuurController {
         VerhuurArea.setEditable(false);
     }
 
+    private void Retourneer() throws IOException {
+        product.setStatus("op voorraad");
+        product.setPrijs(0);
+        product.getHuurgegevens().resetInfo();
+        setProductList();
+        NaarOverzicht();
+    }
+
+    private void NaarOverzicht() throws IOException {
+        loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("overzicht-view.fxml"));
+
+        switcher.setLoader(loader);
+        switcher.setNode(VerzekerBtn);
+        switcher.PrepareStage();
+
+        //acces the controller and call a method
+        OverzichtController controller = loader.getController();
+        controller.initialize(medewerker, productList);
+
+        switcher.CallStage();
+
+
+    }
+
     @FXML
     protected void OnVerhuurBtnClick(){
         String naam = NaamField.getText();
@@ -92,10 +123,23 @@ public class VerhuurController {
 
         setHuurinfo();
         setProduct();
+        setProductList();
 
         setDetailsArea();
         showVerhuurArea();
     }
+
+    @FXML
+    protected void OnTerugBtnClick() throws IOException {
+        NaarOverzicht();
+    }
+
+    @FXML
+    protected void OnRetourneerBtnClick() throws IOException {
+        Retourneer();
+    }
+
+
 
 
 

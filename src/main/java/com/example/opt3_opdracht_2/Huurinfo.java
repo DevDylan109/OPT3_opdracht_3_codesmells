@@ -32,6 +32,12 @@ public class Huurinfo { // class Huurinfo
         this.dagen = dagen;
     }
 
+    public void resetInfo(){
+        this.medewerker = null;
+        this.dagen = 0;
+        this.klant = null;
+    }
+
 
 
     public String printinfo() {

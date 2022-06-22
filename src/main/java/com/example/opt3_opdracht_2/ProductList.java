@@ -27,6 +27,7 @@ public class ProductList extends Observable{
     public void setProduct(Product product){
         ProductList.remove(product);
         ProductList.add(product);
+        System.out.println(product.getStatus());
         notifyObservers();
     }
 
