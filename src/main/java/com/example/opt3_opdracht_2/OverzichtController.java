@@ -1,15 +1,21 @@
 package com.example.opt3_opdracht_2;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
+
 public class OverzichtController implements Observer {
 
+    private SceneSwitcher switcher;
+    private FXMLLoader loader;
     private Medewerker medewerker;
     private ProductList productlist;
+    private Product Selected;
     @FXML
     private Label MedewerkersLabel;
 
@@ -53,11 +59,41 @@ public class OverzichtController implements Observer {
         initProductView();
     }
 
+    private void SelectProduct(){
+        Selected = ProductView.getSelectionModel().getSelectedItem();
+    }
+
+    @FXML
+    protected void OnVerhuurBtnClick() throws IOException {
+        SelectProduct();
+        NaarVerhuur();
+    }
     @FXML
     protected void OnDeleteBtnClick(){
-        Product Selected;
-        Selected = ProductView.getSelectionModel().getSelectedItem();
+        SelectProduct();
         productlist.removeProduct(Selected);
+    }
+
+
+    @FXML
+    protected void NaarVerhuur() throws IOException {
+
+        loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("verhuur-view.fxml"));
+
+        switcher = new SceneSwitcher();
+        switcher.setLoader(loader);
+        switcher.setNode(MedewerkersLabel);
+        switcher.PrepareNewStage();
+
+        //acces the controller and call a method
+        VerhuurController controller = loader.getController();
+        controller.initialize(medewerker, productlist, Selected);
+
+        switcher.CallStage();
+
+
+
     }
 
 
