@@ -6,6 +6,7 @@ public abstract class Product {
     private String naam;
     private String beschrijving;
     private String status;
+    private boolean isVerzekerd;
     private double prijs;
 
     private Huurinfo huurinformatie;
@@ -43,6 +44,10 @@ public abstract class Product {
         this.prijs = prijs;
     }
 
+    public void setVerzekerd(boolean verzekerd) {
+        isVerzekerd = verzekerd;
+    }
+
     public Huurinfo getHuurgegevens() {
         return huurinformatie;
     }
@@ -55,10 +60,16 @@ public abstract class Product {
         this.huurinformatie = huurcontract;
     }
 
-    //method template
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    //template method
     public void berekenPrijs(){
         berekenHuurprijs();
-        berekenVerzekering();
+        if(isVerzekerd){
+            berekenVerzekering();
+        }
     }
 
     public abstract void berekenHuurprijs();

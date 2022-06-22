@@ -4,10 +4,8 @@ public class Huurinfo { // class Huurinfo
     private Medewerker medewerker;
     private Klant klant;
     private int dagen;
-    private String status;
 
     public Huurinfo() { // constructor Huurinfo
-        this.status = "op voorraad";
     }
 
     public Medewerker getMedewerker() {
@@ -34,15 +32,9 @@ public class Huurinfo { // class Huurinfo
         this.dagen = dagen;
     }
 
-    public String getStatus() {
-        return status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String printinfo() {
-        return "Huurinfo: " + "Verhuurd door medewerker: " + medewerker.getNaam() + " Klant: " + klant.getNaam() + " Dagen: " + dagen + " Status: " + status;
+        return "Huurinfo: " + "Verhuurd door medewerker: " + medewerker.getNaam() + " Klant: " + klant.getNaam() + " " + klant.getAchternaam() + " Dagen: " + dagen;
     }
 }

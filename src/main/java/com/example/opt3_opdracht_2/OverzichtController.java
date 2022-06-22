@@ -84,7 +84,7 @@ public class OverzichtController implements Observer {
         switcher = new SceneSwitcher();
         switcher.setLoader(loader);
         switcher.setNode(MedewerkersLabel);
-        switcher.PrepareNewStage();
+        switcher.PrepareStage();
 
         //acces the controller and call a method
         VerhuurController controller = loader.getController();

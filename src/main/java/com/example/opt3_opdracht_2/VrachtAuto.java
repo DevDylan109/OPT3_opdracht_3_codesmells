@@ -13,9 +13,9 @@ public class VrachtAuto extends Product {
     private int gewicht;
     private int laadvermogen;
 
+
     public VrachtAuto(String naam, String beschrijving) {
         super(naam, beschrijving);
-
     }
 
     @Override
@@ -62,6 +62,6 @@ public class VrachtAuto extends Product {
     @Override
     public String printDetails() {
         return "Naam: " + getNaam() + "\nLaadvermogen: " + laadvermogen + "\nGewicht: " + gewicht + "\nBeschrijving: " + getBeschrijving() +
-                "\nPrijs: " + getPrijs();
+                "\nPrijs: " + getPrijs() + "\nStatus: " + getStatus();
     }
 }
