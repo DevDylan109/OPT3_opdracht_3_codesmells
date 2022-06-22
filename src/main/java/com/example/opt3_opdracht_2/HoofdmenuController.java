@@ -34,12 +34,11 @@ public class HoofdmenuController {
 
     @FXML
     protected void onOverzichtBtnClick() throws IOException {
-        //setLoader("overzicht-view.fxml");
         NaarOverzicht();
     }
     @FXML
-    protected void onBeheerBtnClick(){
-        //open new scene
+    protected void onBeheerBtnClick() throws IOException {
+        NaarBeheer();
     }
     @FXML
     protected void onUitloggenBtnClick(){
@@ -47,10 +46,6 @@ public class HoofdmenuController {
         stage.close();
     }
 
-
-//    private void setLoader(String fxmlPath){
-//        loader.setLocation(getClass().getResource(fxmlPath));
-//    }
 
     private void NaarOverzicht() throws IOException {
         setSceneSwitch("overzicht-view.fxml");
@@ -61,10 +56,10 @@ public class HoofdmenuController {
 
 
     private void NaarBeheer() throws IOException {
-//        setSceneSwitch();
-//        OverzichtController controller = loader.getController();
-//        controller.initialize();
-//        SwitchScenes();
+        setSceneSwitch("beheer-view.fxml");
+        BeheerController controller = loader.getController();
+        controller.initialize(medewerker, productlist);
+        SwitchScenes();
     }
 
 

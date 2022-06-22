@@ -59,6 +59,6 @@ public class VrachtAuto extends Product {
     @Override
     public String printDetails() {
         return "Naam: " + getNaam() + "\nLaadvermogen: " + laadvermogen + "\nGewicht: " + gewicht + "\nBeschrijving: " + getBeschrijving() +
-                "\nPrijs: " + getPrijs() + getHuurgegevens().printinfo();
+                "\nPrijs: " + getPrijs();
     }
 }
