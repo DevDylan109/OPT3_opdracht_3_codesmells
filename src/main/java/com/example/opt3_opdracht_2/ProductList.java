@@ -24,6 +24,12 @@ public class ProductList extends Observable{
         return ProductList;
     }
 
+    public void setProduct(Product product){
+        ProductList.remove(product);
+        ProductList.add(product);
+        notifyObservers();
+    }
+
     public void addProduct(Product product) {
         ProductList.add(product);
         notifyObservers();

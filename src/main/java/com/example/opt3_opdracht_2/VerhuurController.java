@@ -9,6 +9,9 @@ public class VerhuurController {
     private Medewerker medewerker;
     private ProductList productList;
     private Product product;
+    private Huurinfo huurinfo;
+    private int dagen;
+    private Klant klant;
 
     @FXML
     private TextArea DetailsArea;
@@ -31,8 +34,30 @@ public class VerhuurController {
         this.medewerker = medewerker;
         this.productList = productlist;
         this.product = product;
+        initHuurinfo();
         setDetailsArea();
         showVerhuurArea();
+    }
+
+    private void initHuurinfo(){
+        this.huurinfo = product.getHuurgegevens();
+    }
+
+    private void setHuurinfo(){
+        huurinfo.setKlant(klant);
+        huurinfo.setDagen(dagen);
+        huurinfo.setMedewerker(medewerker);
+    }
+
+    private void setProduct(){
+        product.setVerzekerd(VerzekerBtn.isSelected());
+        product.berekenPrijs();
+        product.setStatus("verhuurd");
+        setProductList();
+    }
+
+    private void setProductList(){
+        productList.setProduct(product);
     }
 
     private void showVerhuurArea(){
@@ -61,17 +86,14 @@ public class VerhuurController {
     protected void OnVerhuurBtnClick(){
         String naam = NaamField.getText();
         String achternaam = AchternaamField.getText();
-        int dagen = Integer.parseInt(DagenField.getText());
-        Klant klant = new Klant(naam, achternaam);
-        product.getHuurgegevens().setKlant(klant);
-        product.getHuurgegevens().setDagen(dagen);
-        product.getHuurgegevens().setMedewerker(medewerker);
 
-        product.setVerzekerd(VerzekerBtn.isSelected());
-        product.berekenPrijs();
-        product.setStatus("verhuurd");
+        klant = new Klant(naam, achternaam);
+        dagen = Integer.parseInt(DagenField.getText());
+
+        setHuurinfo();
+        setProduct();
+
         setDetailsArea();
-//        setVerhuurArea();
         showVerhuurArea();
     }
 
