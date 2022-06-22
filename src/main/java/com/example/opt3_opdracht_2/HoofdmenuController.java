@@ -12,15 +12,17 @@ public class HoofdmenuController {
     private Medewerker medewerker;
     private FXMLLoader loader;
     private SceneSwitcher SceneSwitch;
+    private ProductList productlist;
 
     @FXML
     private Label MedewerkersLabel;
 
 
 
-    public void initialize(Medewerker medewerker){
+    public void initialize(Medewerker medewerker, ProductList productlist){
         SceneSwitch = new SceneSwitcher();
         this.medewerker = medewerker;
+        this.productlist = productlist;
         initLabel();
     }
 
@@ -53,7 +55,7 @@ public class HoofdmenuController {
     private void NaarOverzicht() throws IOException {
         setSceneSwitch("overzicht-view.fxml");
         OverzichtController controller = loader.getController();
-        controller.initialize(medewerker);
+        controller.initialize(medewerker, productlist);
         SwitchScenes();
     }
 

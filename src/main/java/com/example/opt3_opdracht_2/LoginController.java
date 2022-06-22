@@ -15,6 +15,7 @@ public class LoginController {
     private Medewerker medewerker;
     private SceneSwitcher switcher;
     private FXMLLoader loader;
+    private ProductList productlist;
     @FXML
     private TextField Gebruikersnaam;
     @FXML
@@ -25,6 +26,7 @@ public class LoginController {
     protected void initialize(){
         login = new Login();
         switcher = new SceneSwitcher();
+        productlist = new ProductList();
 
     }
 
@@ -60,7 +62,7 @@ public class LoginController {
 
         //acces the controller and call a method
         HoofdmenuController controller = loader.getController();
-        controller.initialize(medewerker);
+        controller.initialize(medewerker, productlist);
 
         switcher.CallStage();
 
