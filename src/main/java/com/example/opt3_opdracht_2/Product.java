@@ -4,8 +4,6 @@ public abstract class Product {
     private String naam;
     private String beschrijving;
     private String status;
-    private boolean isVerzekerd;
-    private double prijs;
     private double prijsPerDag;
 
     private Huurinfo huurinformatie;
@@ -27,20 +25,8 @@ public abstract class Product {
         return beschrijving;
     }
 
-    public double getPrijs() {
-        return prijs;
-    }
-
-    public void setNaam(String naam) {
-        this.naam = naam;
-    }
-
     public void setBeschrijving(String beschrijving) {
         this.beschrijving = beschrijving;
-    }
-
-    public void setPrijs(double prijs) {
-        this.prijs = prijs;
     }
 
     public void setPrijsPerDag(double prijsPerDag){
@@ -51,10 +37,6 @@ public abstract class Product {
         return prijsPerDag;
     }
 
-    public void setVerzekerd(boolean verzekerd) {
-        isVerzekerd = verzekerd;
-    }
-
     public Huurinfo getHuurgegevens() {
         return huurinformatie;
     }
@@ -63,30 +45,21 @@ public abstract class Product {
         return status;
     }
 
-    public void setHuurgegevens(Huurinfo huurcontract) {
-        this.huurinformatie = huurcontract;
-    }
 
     public void setStatus(String status) {
         this.status = status;
     }
 
     //template method
-    public void berekenPrijzen(){
+    public void berekenPrijzen(boolean isVerzekerd) {
         berekenHuurprijs();
         if(isVerzekerd){
             berekenVerzekering();
         }
-        berekenPrijsPerDag();
     }
 
     public abstract void berekenHuurprijs();
     public abstract void berekenVerzekering();
 
-    public void berekenPrijsPerDag(){
-        double prijsPerDag = getPrijs() / getHuurgegevens().getDagen();
-        setPrijsPerDag(prijsPerDag);
-    }
 
-    public abstract String printDetails();
 }

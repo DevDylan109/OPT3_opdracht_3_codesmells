@@ -74,8 +74,7 @@ public class VerhuurController {
     }
 
     private void setProduct(){
-        product.setVerzekerd(VerzekerBtn.isSelected());
-        product.berekenPrijzen();
+        product.berekenPrijzen(VerzekerBtn.isSelected());
         product.setStatus("verhuurd");
     }
 
@@ -96,19 +95,19 @@ public class VerhuurController {
     }
 
     private void setDetailsArea(){
-        DetailsArea.setText(product.printDetails());
+        DetailsArea.setText(String.valueOf(product));
         DetailsArea.setEditable(false);
     }
 
     private void setVerhuurArea(){
-        String info = product.getHuurgegevens().printinfo();
+        String info = String.valueOf(product.getHuurgegevens());
         VerhuurArea.setText(info);
         VerhuurArea.setEditable(false);
     }
 
     private void Retourneer() throws IOException {
         product.setStatus("op voorraad");
-        product.setPrijs(0);
+        product.setPrijsPerDag(0);
         product.getHuurgegevens().resetInfo();
         setProductList();
         NaarOverzicht();
@@ -143,6 +142,8 @@ public class VerhuurController {
 
         klant = new Klant(naam, achternaam);
         dagen = Integer.parseInt(DagenField.getText());
+
+
 
         setHuurinfo();
         setProduct();

@@ -59,21 +59,21 @@ public class VrachtAuto extends Product {
 
     @Override
     public void berekenHuurprijs() {
-        double prijs = getHuurgegevens().getDagen() * (0.10 * laadvermogen);
-        setPrijs(prijs);
+        double prijs = 1 * (0.10 * laadvermogen);
+        setPrijsPerDag(prijs);
     }
 
     @Override
     public void berekenVerzekering() {
-        double prijs = getHuurgegevens().getDagen() * (0.01 * gewicht);
-        setPrijs(getPrijs() + prijs);
+        double prijs = 1 * (0.01 * gewicht);
+        setPrijsPerDag(getPrijsPerDag() + prijs);
     }
 
 
 
     @Override
-    public String printDetails() {
+    public String toString() {
         return "Naam: " + getNaam() + "\nLaadvermogen: " + laadvermogen + " KG" + "\nGewicht: " + gewicht + " KG" +"\nBeschrijving: " + getBeschrijving() +
-                "\nPrijs: " + getPrijs() + " €" + "\nDagPrijs: " + getPrijsPerDag() + " €" + "\nStatus: " + getStatus();
+                "\nPrijs per dag: " + getPrijsPerDag() + " €" + "\nStatus: " + getStatus();
     }
 }

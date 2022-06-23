@@ -65,19 +65,19 @@ public class Boormachine extends Product {
 
     @Override
     public void berekenHuurprijs() {
-        double prijs = getHuurgegevens().getDagen() * 5;
-        setPrijs(prijs);
+        double prijs = 1 * 5;
+        setPrijsPerDag(prijs);
     }
 
     @Override
     public void berekenVerzekering() {
-        double prijs = getHuurgegevens().getDagen() * 1;
-        setPrijs(getPrijs() + prijs);
+        double prijs = 1 * 1;
+        setPrijsPerDag(getPrijsPerDag() + prijs);
     }
 
     @Override
-    public String printDetails() {
+    public String toString() {
         return "Naam: " + getNaam() + "\nMerk: " + merk + "\nType: " + type + "\nBeschrijving: " + getBeschrijving() +
-                "\nPrijs: " + getPrijs() + " €" + "\nDagPrijs: " + getPrijsPerDag() + " €" + "\nStatus: " + getStatus();
+                "\nPrijs per dag: " + getPrijsPerDag() + " €" + "\nStatus: " + getStatus();
     }
 }

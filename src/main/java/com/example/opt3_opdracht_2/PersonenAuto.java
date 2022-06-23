@@ -57,19 +57,19 @@ public class PersonenAuto extends Product {
 
     @Override
     public void berekenHuurprijs() {
-        double prijs = getHuurgegevens().getDagen() * 50;
-        setPrijs(prijs);
+        double prijs = 1 * 50;
+        setPrijsPerDag(prijs);
     }
 
     @Override
     public void berekenVerzekering() {
-        double prijs = getHuurgegevens().getDagen() * (0.01 * gewicht);
-        setPrijs(getPrijs() + prijs);
+        double prijs = 1 * (0.01 * gewicht);
+        setPrijsPerDag(getPrijsPerDag() + prijs);
     }
 
     @Override
-    public String printDetails() {
+    public String toString() {
         return "Naam: " + getNaam() + "\nMerk: " + merk + "\nGewicht: " + gewicht + " KG" + "\nBeschrijving: " + getBeschrijving() +
-                "\nPrijs: " + getPrijs() + " €" + "\nDagPrijs: " + getPrijsPerDag() + " €" + "\nStatus: " + getStatus();
+                "\nPrijs per dag: " + getPrijsPerDag() + " €" + "\nStatus: " + getStatus();
     }
 }

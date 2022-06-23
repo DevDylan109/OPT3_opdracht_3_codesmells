@@ -66,7 +66,6 @@ public class BeheerController {
 
     @FXML
     protected void OnAddBtnClick(){
-        System.out.println(product.printDetails());
         productList.addProduct(product);
     }
 

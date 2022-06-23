@@ -39,8 +39,8 @@ public class Huurinfo { // class Huurinfo
     }
 
 
-
-    public String printinfo() {
+@Override
+    public String toString() {
         return "Huurinfo: " + "\nVerhuurd door medewerker: " + medewerker.getNaam() +
                 "\nKlant: " + klant.getNaam() + " " + klant.getAchternaam() + "\nDagen: " + dagen;
     }
