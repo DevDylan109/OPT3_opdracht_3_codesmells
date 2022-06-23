@@ -13,6 +13,7 @@ public class HoofdmenuController {
     private FXMLLoader loader;
     private SceneSwitcher SceneSwitch;
     private ProductList productlist;
+    private Login loginInstance;
 
     @FXML
     private Label MedewerkersLabel;
@@ -32,6 +33,15 @@ public class HoofdmenuController {
         MedewerkersLabel.setText("Welcome: " + medewerker.getNaam());
     }
 
+    public void initLogin(Login login){
+        this.loginInstance = login;
+    }
+
+    private void updateLoginInstance(){
+        //Verwijder de ingelogde user uit de login instance.
+        loginInstance.LogUit(medewerker);
+    }
+
     @FXML
     protected void onOverzichtBtnClick() throws IOException {
         NaarOverzicht();
@@ -42,6 +52,7 @@ public class HoofdmenuController {
     }
     @FXML
     protected void onUitloggenBtnClick(){
+        updateLoginInstance();
         Stage stage = (Stage) MedewerkersLabel.getScene().getWindow();
         stage.close();
     }

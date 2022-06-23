@@ -5,24 +5,28 @@ import java.util.ArrayList;
 public class Login {
 
     private ArrayList<Medewerker> MedewerkersList;
-    private Medewerker HuidigeMedewerker;
+    private ArrayList<Medewerker> IngelogdeMedewerkers;
 
     private boolean isAlreadyLoggedIn;
 
     public Login(){
         Repository repository = new Repository();
+        this.IngelogdeMedewerkers = new ArrayList<>();
         this.MedewerkersList = repository.getMedewerkers();
     }
 
     private void IsAlIngelogd(String GEBRUIKERSNAAM){
-        if(HuidigeMedewerker == null){
-            isAlreadyLoggedIn = false;
-        }
-        else if(HuidigeMedewerker.getGebruikersnaam().equals(GEBRUIKERSNAAM)){
-            isAlreadyLoggedIn = true;
-        }
-        else{
-            isAlreadyLoggedIn = false;
+        for(Medewerker IngelogdeMedewerker : IngelogdeMedewerkers){
+            if(IngelogdeMedewerker == null){
+                setAlreadyLoggedIn(false);
+            }
+            else if(IngelogdeMedewerker.getGebruikersnaam().equals(GEBRUIKERSNAAM)){
+                setAlreadyLoggedIn(true);
+                break;
+            }
+            else{
+                setAlreadyLoggedIn(false);
+            }
         }
     }
 
@@ -39,19 +43,23 @@ public class Login {
 
                 if(VerwachteGebruikersnaam.equals(GEBRUIKERSNAAM) && VerwachteWachtwoord.equals(WACHTWOORD)){
                     AutoriserendeMedewerker = Medewerker;
-                    HuidigeMedewerker = Medewerker;
+                    IngelogdeMedewerkers.add(Medewerker);
                 }
             }
         }
         return AutoriserendeMedewerker;
     }
 
-    public Medewerker getHuidigeMedewerker() {
-        return HuidigeMedewerker;
+    private void setAlreadyLoggedIn(boolean beslissing){
+        isAlreadyLoggedIn = beslissing;
     }
+//    public Medewerker getHuidigeMedewerker() {
+//        return HuidigeMedewerker;
+//    }
 
-    public void clearHuidigeMedewerker() {
-        this.HuidigeMedewerker = null;
+    public void LogUit(Medewerker medewerker) {
+        setAlreadyLoggedIn(false);
+        IngelogdeMedewerkers.remove(medewerker);
     }
 }
 

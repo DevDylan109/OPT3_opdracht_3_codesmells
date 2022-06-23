@@ -60,6 +60,7 @@ public class LoginController {
         //acces the controller and call a method
         HoofdmenuController controller = loader.getController();
         controller.initialize(medewerker, productlist);
+        controller.initLogin(login);
 
         switcher.CallStage();
 
