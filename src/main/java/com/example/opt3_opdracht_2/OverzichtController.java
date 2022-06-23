@@ -74,6 +74,11 @@ public class OverzichtController implements Observer {
         productlist.removeProduct(Selected);
     }
 
+    @FXML
+    protected void OnHoofdmenuBtnClick() throws IOException {
+        NaarHoofdmenu();
+    }
+
 
     @FXML
     protected void NaarVerhuur() throws IOException {
@@ -93,6 +98,23 @@ public class OverzichtController implements Observer {
         switcher.CallStage();
 
 
+
+    }
+
+    private void NaarHoofdmenu() throws IOException {
+        switcher = new SceneSwitcher();
+        loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("hoofdmenu-view.fxml"));
+
+        switcher.setLoader(loader);
+        switcher.setNode(MedewerkersLabel);
+        switcher.PrepareStage();
+
+        //acces the controller and call a method
+        HoofdmenuController controller = loader.getController();
+        controller.initialize(medewerker, productlist);
+
+        switcher.CallStage();
 
     }
 

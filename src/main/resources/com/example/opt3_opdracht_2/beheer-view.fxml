@@ -8,7 +8,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.opt3_opdracht_2.BeheerController">
    <children>
       <Label fx:id="MedewerkersLabel" layoutX="47.0" layoutY="15.0" text="Label" />
@@ -23,6 +22,7 @@
         </columns>
       </TableView>
       <Button fx:id="createProductBtn" layoutX="300.0" layoutY="185.0" mnemonicParsing="false" onAction="#OnCreateBtnClick" text="createProduct" />
-      <Button fx:id="addProductBtn" layoutX="305.0" layoutY="259.0" mnemonicParsing="false" onAction="#OnAddBtnClick" text="addProduct" />
+      <Button fx:id="addProductBtn" layoutX="420.0" layoutY="185.0" mnemonicParsing="false" onAction="#OnAddBtnClick" text="addProduct" />
+      <Button layoutX="503.0" layoutY="347.0" mnemonicParsing="false" onAction="#OnHoofdmenuClick" text="Hoofdmenu" />
    </children>
 </AnchorPane>

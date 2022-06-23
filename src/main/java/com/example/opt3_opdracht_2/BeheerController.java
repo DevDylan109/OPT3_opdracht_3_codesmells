@@ -3,17 +3,22 @@ package com.example.opt3_opdracht_2;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
+
 public class BeheerController {
 
     private Medewerker medewerker;
     private ProductList productList;
     private Product product;
+    private FXMLLoader loader;
+    private SceneSwitcher switcher;
 
     @FXML
     private Button createProductBtn;
@@ -58,5 +63,27 @@ public class BeheerController {
     protected void OnAddBtnClick(){
         System.out.println(product.printDetails());
         productList.addProduct(product);
+    }
+
+    @FXML
+    protected void OnHoofdmenuClick() throws IOException {
+        NaarHoofdmenu();
+    }
+
+    private void NaarHoofdmenu() throws IOException {
+        switcher = new SceneSwitcher();
+        loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("hoofdmenu-view.fxml"));
+
+        switcher.setLoader(loader);
+        switcher.setNode(addProductBtn);
+        switcher.PrepareStage();
+
+        //acces the controller and call a method
+        HoofdmenuController controller = loader.getController();
+        controller.initialize(medewerker, productList);
+
+        switcher.CallStage();
+
     }
 }
