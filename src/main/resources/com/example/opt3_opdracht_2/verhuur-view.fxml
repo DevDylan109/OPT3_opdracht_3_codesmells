@@ -19,7 +19,7 @@
       <Button layoutX="464.0" layoutY="498.0" mnemonicParsing="false" onAction="#OnTerugBtnClick" text="Naar Overzicht" />
       <TextField fx:id="NaamField" layoutX="363.0" layoutY="75.0" promptText="Voornaam" />
       <ToggleButton fx:id="VerzekerBtn" layoutX="439.0" layoutY="325.0" mnemonicParsing="false" text="Verzekeren?" />
-      <Button layoutX="439.0" layoutY="375.0" mnemonicParsing="false" onAction="#OnRetourneerBtnClick" text="Retourneren" />
+      <Button fx:id="RetourBtn" layoutX="439.0" layoutY="375.0" mnemonicParsing="false" onAction="#OnRetourneerBtnClick" text="Retourneren" />
       <Label fx:id="Medewerkerslabel" layoutX="526.0" layoutY="18.0" text="Label" />
       <ImageView fx:id="image" fitHeight="27.0" fitWidth="26.0" layoutX="490.0" layoutY="13.0" pickOnBounds="true" smooth="false">
          <image>

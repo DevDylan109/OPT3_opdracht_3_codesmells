@@ -16,6 +16,7 @@ public class OverzichtController implements Observer {
     private Medewerker medewerker;
     private ProductList productlist;
     private Product Selected;
+    private Login loginInstance;
     @FXML
     private Label MedewerkersLabel;
 
@@ -36,6 +37,10 @@ public class OverzichtController implements Observer {
         setMedewerkersLabel();
         initProductView();
         setColumns();
+    }
+
+    public void initLogin(Login login){
+        this.loginInstance = login;
     }
 
     private void setMedewerkersLabel(){
@@ -94,6 +99,7 @@ public class OverzichtController implements Observer {
         //acces the controller and call a method
         VerhuurController controller = loader.getController();
         controller.initialize(medewerker, productlist, Selected);
+        controller.initLogin(loginInstance);
 
         switcher.CallStage();
 
@@ -113,6 +119,7 @@ public class OverzichtController implements Observer {
         //acces the controller and call a method
         HoofdmenuController controller = loader.getController();
         controller.initialize(medewerker, productlist);
+        controller.initLogin(loginInstance);
 
         switcher.CallStage();
 

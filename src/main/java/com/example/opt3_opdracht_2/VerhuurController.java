@@ -16,6 +16,7 @@ public class VerhuurController {
     private Klant klant;
     private FXMLLoader loader;
     private SceneSwitcher switcher;
+    private Login loginInstance;
 
     @FXML
     private TextArea DetailsArea;
@@ -29,19 +30,32 @@ public class VerhuurController {
     private TextField DagenField;
     @FXML
     private ToggleButton VerzekerBtn;
-
     @FXML
     private Label Medewerkerslabel;
+    @FXML
+    private Button RetourBtn;
 
     public void initialize(Medewerker medewerker, ProductList productlist, Product product) {
         this.medewerker = medewerker;
         this.productList = productlist;
         this.product = product;
         this.switcher = new SceneSwitcher();
+
         initHuurinfo();
         setDetailsArea();
         showVerhuurArea();
         setMedewerkersLabel();
+
+        if(product.getStatus().equals("verhuurd")) {
+            setRetourBtnVisible(true);
+        }
+        else{
+            setRetourBtnVisible(false);
+        }
+    }
+
+    public void initLogin(Login login){
+        this.loginInstance = login;
     }
 
     private void setMedewerkersLabel(){
@@ -98,6 +112,7 @@ public class VerhuurController {
         product.getHuurgegevens().resetInfo();
         setProductList();
         NaarOverzicht();
+        setRetourBtnVisible(false);
     }
 
     private void NaarOverzicht() throws IOException {
@@ -111,10 +126,14 @@ public class VerhuurController {
         //acces the controller and call a method
         OverzichtController controller = loader.getController();
         controller.initialize(medewerker, productList);
-
+        controller.initLogin(loginInstance);
         switcher.CallStage();
 
 
+    }
+
+    private void setRetourBtnVisible(boolean beslissing){
+        RetourBtn.setVisible(beslissing);
     }
 
     @FXML
@@ -131,6 +150,7 @@ public class VerhuurController {
 
         setDetailsArea();
         showVerhuurArea();
+        setRetourBtnVisible(true);
     }
 
     @FXML

@@ -19,6 +19,7 @@ public class BeheerController {
     private Product product;
     private FXMLLoader loader;
     private SceneSwitcher switcher;
+    private Login loginInstance;
 
     @FXML
     private Button createProductBtn;
@@ -36,6 +37,10 @@ public class BeheerController {
         this.productList = productList;
         setLabel();
         setFactoryView();
+    }
+
+    public void initLogin(Login login){
+        this.loginInstance = login;
     }
 
     private void setLabel(){
@@ -82,6 +87,7 @@ public class BeheerController {
         //acces the controller and call a method
         HoofdmenuController controller = loader.getController();
         controller.initialize(medewerker, productList);
+        controller.initLogin(loginInstance);
 
         switcher.CallStage();
 
