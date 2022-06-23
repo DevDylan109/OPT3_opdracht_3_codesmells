@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class VrachtAuto extends Product {
@@ -27,9 +28,18 @@ public class VrachtAuto extends Product {
         VBox vBox = new VBox();
         rootPane.getChildren().add(vBox);
 
-        vBox.getChildren().add(new TextField("gewicht"));
-        vBox.getChildren().add(new TextField("laadvermogen"));
-        vBox.getChildren().add(new TextField("beschrijving"));
+        TextField gewichtField = new TextField();
+        gewichtField.setPromptText("gewicht");
+
+        TextField laadvermogenField = new TextField();
+        laadvermogenField.setPromptText("laadvermogen");
+
+        TextField beschrijvingField = new TextField();
+        beschrijvingField.setPromptText("beschrijving");
+
+        vBox.getChildren().add(gewichtField);
+        vBox.getChildren().add(laadvermogenField);
+        vBox.getChildren().add(beschrijvingField);
 
         Button button = new Button ("setText");
         button.setOnAction (new EventHandler<ActionEvent>() {

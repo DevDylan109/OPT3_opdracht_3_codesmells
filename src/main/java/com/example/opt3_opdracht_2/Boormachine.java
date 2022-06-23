@@ -26,9 +26,18 @@ public class Boormachine extends Product {
         VBox vBox = new VBox();
         rootPane.getChildren().add(vBox);
 
-        vBox.getChildren().add(new TextField("Merk"));
-        vBox.getChildren().add(new TextField("Type"));
-        vBox.getChildren().add(new TextField("Beschrijving"));
+        TextField MerkField = new TextField();
+        MerkField.setPromptText("Merk");
+
+        TextField TypeField = new TextField();
+        TypeField.setPromptText("Type");
+
+        TextField BeschrijvingField = new TextField();
+        BeschrijvingField.setPromptText("Beschrijving");
+
+        vBox.getChildren().add(MerkField);
+        vBox.getChildren().add(TypeField);
+        vBox.getChildren().add(BeschrijvingField);
 
         Button button = new Button ("setText");
         button.setOnAction (new EventHandler<ActionEvent>() {

@@ -26,9 +26,18 @@ public class PersonenAuto extends Product {
         VBox vBox = new VBox();
         rootPane.getChildren().add(vBox);
 
-        vBox.getChildren().add(new TextField("Merk"));
-        vBox.getChildren().add(new TextField("Gewicht"));
-        vBox.getChildren().add(new TextField("Beschrijving"));
+        TextField MerkField = new TextField();
+        MerkField.setPromptText("Merk");
+
+        TextField GewichtField = new TextField();
+        GewichtField.setPromptText("Gewicht");
+
+        TextField BeschrijvingField = new TextField();
+        BeschrijvingField.setPromptText("Beschrijving");
+
+        vBox.getChildren().add(MerkField);
+        vBox.getChildren().add(GewichtField);
+        vBox.getChildren().add(BeschrijvingField);
 
         Button button = new Button ("setText");
         button.setOnAction (new EventHandler<ActionEvent>() {
