@@ -1,13 +1,12 @@
 package com.example.opt3_opdracht_2;
 
-import javafx.stage.Stage;
-
 public abstract class Product {
     private String naam;
     private String beschrijving;
     private String status;
     private boolean isVerzekerd;
     private double prijs;
+    private double prijsPerDag;
 
     private Huurinfo huurinformatie;
 
@@ -44,6 +43,14 @@ public abstract class Product {
         this.prijs = prijs;
     }
 
+    public void setPrijsPerDag(double prijsPerDag){
+        this.prijsPerDag = prijsPerDag;
+    }
+
+    public double getPrijsPerDag() {
+        return prijsPerDag;
+    }
+
     public void setVerzekerd(boolean verzekerd) {
         isVerzekerd = verzekerd;
     }
@@ -65,15 +72,21 @@ public abstract class Product {
     }
 
     //template method
-    public void berekenPrijs(){
+    public void berekenPrijzen(){
         berekenHuurprijs();
         if(isVerzekerd){
             berekenVerzekering();
         }
+        berekenPrijsPerDag();
     }
 
     public abstract void berekenHuurprijs();
     public abstract void berekenVerzekering();
+
+    public void berekenPrijsPerDag(){
+        double prijsPerDag = getPrijs() / getHuurgegevens().getDagen();
+        setPrijsPerDag(prijsPerDag);
+    }
 
     public abstract String printDetails();
 }

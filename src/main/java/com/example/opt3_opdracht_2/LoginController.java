@@ -2,9 +2,12 @@ package com.example.opt3_opdracht_2;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+
+import static javafx.application.Platform.exit;
 
 public class LoginController {
 
@@ -17,6 +20,7 @@ public class LoginController {
     private TextField Gebruikersnaam;
     @FXML
     private TextField Wachtwoord;
+
 
 
     @FXML

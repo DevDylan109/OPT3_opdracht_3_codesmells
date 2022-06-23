@@ -69,9 +69,11 @@ public class VrachtAuto extends Product {
         setPrijs(getPrijs() + prijs);
     }
 
+
+
     @Override
     public String printDetails() {
-        return "Naam: " + getNaam() + "\nLaadvermogen: " + laadvermogen + "\nGewicht: " + gewicht + "\nBeschrijving: " + getBeschrijving() +
-                "\nPrijs: " + getPrijs() + "\nStatus: " + getStatus();
+        return "Naam: " + getNaam() + "\nLaadvermogen: " + laadvermogen + " KG" + "\nGewicht: " + gewicht + " KG" +"\nBeschrijving: " + getBeschrijving() +
+                "\nPrijs: " + getPrijs() + " €" + "\nDagPrijs: " + getPrijsPerDag() + " €" + "\nStatus: " + getStatus();
     }
 }

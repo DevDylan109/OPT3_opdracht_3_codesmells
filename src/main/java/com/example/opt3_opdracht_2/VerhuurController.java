@@ -3,7 +3,6 @@ package com.example.opt3_opdracht_2;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 
@@ -30,10 +29,9 @@ public class VerhuurController {
     private TextField DagenField;
     @FXML
     private ToggleButton VerzekerBtn;
+
     @FXML
-    private Button VerhuurBtn;
-    @FXML
-    private Button cancelBtn;
+    private Label Medewerkerslabel;
 
     public void initialize(Medewerker medewerker, ProductList productlist, Product product) {
         this.medewerker = medewerker;
@@ -43,6 +41,12 @@ public class VerhuurController {
         initHuurinfo();
         setDetailsArea();
         showVerhuurArea();
+        setMedewerkersLabel();
+    }
+
+    private void setMedewerkersLabel(){
+        String Text = medewerker.getNaam();
+        this.Medewerkerslabel.setText(Text);
     }
 
     private void initHuurinfo(){
@@ -57,7 +61,7 @@ public class VerhuurController {
 
     private void setProduct(){
         product.setVerzekerd(VerzekerBtn.isSelected());
-        product.berekenPrijs();
+        product.berekenPrijzen();
         product.setStatus("verhuurd");
     }
 

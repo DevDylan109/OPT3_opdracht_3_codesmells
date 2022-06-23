@@ -69,7 +69,7 @@ public class PersonenAuto extends Product {
 
     @Override
     public String printDetails() {
-        return "Naam: " + getNaam() + "\nMerk: " + merk + "\nGewicht: " + gewicht + "\nBeschrijving: " + getBeschrijving() +
-                "\nPrijs: " + getPrijs() + "\nStatus: " + getStatus();
+        return "Naam: " + getNaam() + "\nMerk: " + merk + "\nGewicht: " + gewicht + " KG" + "\nBeschrijving: " + getBeschrijving() +
+                "\nPrijs: " + getPrijs() + " €" + "\nDagPrijs: " + getPrijsPerDag() + " €" + "\nStatus: " + getStatus();
     }
 }

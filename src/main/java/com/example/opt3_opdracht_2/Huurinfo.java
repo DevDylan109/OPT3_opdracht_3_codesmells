@@ -41,6 +41,7 @@ public class Huurinfo { // class Huurinfo
 
 
     public String printinfo() {
-        return "Huurinfo: " + "Verhuurd door medewerker: " + medewerker.getNaam() + " Klant: " + klant.getNaam() + " " + klant.getAchternaam() + " Dagen: " + dagen;
+        return "Huurinfo: " + "\nVerhuurd door medewerker: " + medewerker.getNaam() +
+                "\nKlant: " + klant.getNaam() + " " + klant.getAchternaam() + "\nDagen: " + dagen;
     }
 }

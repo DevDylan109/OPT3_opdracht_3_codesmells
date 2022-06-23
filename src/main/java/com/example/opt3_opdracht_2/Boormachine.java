@@ -78,6 +78,6 @@ public class Boormachine extends Product {
     @Override
     public String printDetails() {
         return "Naam: " + getNaam() + "\nMerk: " + merk + "\nType: " + type + "\nBeschrijving: " + getBeschrijving() +
-                "\nPrijs: " + getPrijs() + "\nStatus: " + getStatus();
+                "\nPrijs: " + getPrijs() + " €" + "\nDagPrijs: " + getPrijsPerDag() + " €" + "\nStatus: " + getStatus();
     }
 }
