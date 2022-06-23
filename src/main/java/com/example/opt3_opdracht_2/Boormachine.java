@@ -55,13 +55,6 @@ public class Boormachine extends Product {
         stage.show();
     }
 
-    public void setMerk(String merk) {
-        this.merk = merk;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     @Override
     public void berekenHuurprijs() {

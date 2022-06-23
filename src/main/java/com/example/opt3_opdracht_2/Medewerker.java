@@ -15,9 +15,6 @@ public class Medewerker {
         return naam;
     }
 
-    public void setNaam(String naam) {
-        this.naam = naam;
-    }
 
     public String getGebruikersnaam() {
         return gebruikersnaam;
@@ -28,13 +25,6 @@ public class Medewerker {
     }
 
 
-    public void setGebruikersnaam(String gebruikersnaam) {
-        this.gebruikersnaam = gebruikersnaam;
-    }
-
-    public void setWachtwoord(String wachtwoord) {
-        this.wachtwoord = wachtwoord;
-    }
 
 
 }

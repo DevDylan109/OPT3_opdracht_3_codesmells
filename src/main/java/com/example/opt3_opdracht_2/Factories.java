@@ -3,7 +3,7 @@ package com.example.opt3_opdracht_2;
 import java.util.ArrayList;
 
 public class Factories {
-    ArrayList<ProductFactory> FactoryList = new ArrayList<>();
+    private ArrayList<ProductFactory> FactoryList = new ArrayList<>();
 
     public Factories(){
         initializeFactoryList();

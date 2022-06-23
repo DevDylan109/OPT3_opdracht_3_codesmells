@@ -8,25 +8,16 @@ public class Huurinfo { // class Huurinfo
     public Huurinfo() { // constructor Huurinfo
     }
 
-    public Medewerker getMedewerker() {
-        return medewerker;
-    }
 
     public void setMedewerker(Medewerker medewerker) {
         this.medewerker = medewerker;
     }
 
-    public Klant getKlant() {
-        return klant;
-    }
 
     public void setKlant(Klant klant) {
         this.klant = klant;
     }
 
-    public int getDagen() {
-        return dagen;
-    }
 
     public void setDagen(int dagen) {
         this.dagen = dagen;
