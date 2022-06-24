@@ -20,7 +20,7 @@ public class BeheerController {
     private FXMLLoader loader;
     private SceneSwitcher switcher;
     private Login loginInstance;
-    private Factories factories;
+    private FactoryList factoryList;
 
     @FXML
     private Button createProductBtn;
@@ -34,7 +34,7 @@ public class BeheerController {
     private TableColumn<ProductFactory, String> Soort;
 
     protected void initialize(Medewerker medewerker, ProductList productList){
-        factories = new Factories();
+        factoryList = new FactoryList();
         this.medewerker = medewerker;
         this.productList = productList;
         setLabel();
@@ -52,7 +52,7 @@ public class BeheerController {
     private void setFactoryView(){
         //Factories factories = new Factories();
         ObservableList<ProductFactory> factoryList = FXCollections.observableArrayList();
-        factoryList.setAll(factories.getFactoryList());
+        factoryList.setAll(this.factoryList.getFactoryList());
         FactoryView.setItems(factoryList);
         Soort.setCellValueFactory(new PropertyValueFactory<>("FactoryName"));
     }
