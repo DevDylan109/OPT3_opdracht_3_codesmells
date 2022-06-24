@@ -34,6 +34,8 @@ public class VerhuurController {
     private Label Medewerkerslabel;
     @FXML
     private Button RetourBtn;
+    @FXML
+    private Button VerhuurBtn;
 
     public void initialize(Medewerker medewerker, ProductList productlist, Product product) {
         this.medewerker = medewerker;
@@ -46,11 +48,20 @@ public class VerhuurController {
         showVerhuurArea();
         setMedewerkersLabel();
 
+
+        checkIfVerhuurd();
+    }
+
+    private void checkIfVerhuurd() {
         if(product.getStatus().equals("verhuurd")) {
             setRetourBtnVisible(true);
+            setVerhuurBtnVisible(false);
+            setVerzekerBtnVisible(false);
         }
         else{
             setRetourBtnVisible(false);
+            setVerhuurBtnVisible(true);
+            setVerzekerBtnVisible(true);
         }
     }
 
@@ -134,6 +145,12 @@ public class VerhuurController {
     private void setRetourBtnVisible(boolean beslissing){
         RetourBtn.setVisible(beslissing);
     }
+    private void setVerhuurBtnVisible(boolean  beslissing){
+        VerhuurBtn.setVisible(beslissing);
+    }
+    private void setVerzekerBtnVisible(boolean beslissing){
+        VerzekerBtn.setVisible(beslissing);
+    }
 
     @FXML
     protected void OnVerhuurBtnClick(){
@@ -152,6 +169,9 @@ public class VerhuurController {
         setDetailsArea();
         showVerhuurArea();
         setRetourBtnVisible(true);
+        setVerhuurBtnVisible(false);
+        setVerzekerBtnVisible(false);
+
     }
 
     @FXML
