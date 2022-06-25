@@ -10,8 +10,7 @@ public class LoginController {
 
     private Login login;
     private Medewerker medewerker;
-    private SceneSwitcher switcher;
-    private FXMLLoader loader;
+//    private SceneSwitcher switcher;
     private ProductList productlist;
     @FXML
     private TextField Gebruikersnaam;
@@ -23,7 +22,7 @@ public class LoginController {
     @FXML
     protected void initialize(){
         login = new Login();
-        switcher = new SceneSwitcher();
+        //switcher = new SceneSwitcher();
         productlist = new ProductList();
 
     }
@@ -51,19 +50,15 @@ public class LoginController {
 
 
     private void switchToScene2() throws IOException {
-        loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("hoofdmenu-view.fxml"));
-
-        switcher.setLoader(loader);
-        switcher.setNode(Gebruikersnaam);
-        switcher.PrepareNewStage();
+        SceneSwitcher switcher = new NewSceneSwitcher();
+        switcher.PrepareScene("hoofdmenu-view.fxml", Wachtwoord);
 
         //acces the controller and call a method
-        HoofdmenuController controller = loader.getController();
+        HoofdmenuController controller = switcher.getLoader().getController();
         controller.initialize(medewerker, productlist);
         controller.initLogin(login);
 
-        switcher.CallStage();
+        switcher.SwitchToScene();
 
 
     }

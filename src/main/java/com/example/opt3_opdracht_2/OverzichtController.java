@@ -31,6 +31,7 @@ public class OverzichtController implements Observer {
 
 
     protected void initialize(Medewerker medewerker, ProductList productlist){
+        this.switcher = new currentSceneSwitcher();
         this.medewerker = medewerker;
         this.productlist = productlist;
         productlist.addObserver(this);
@@ -85,44 +86,35 @@ public class OverzichtController implements Observer {
     }
 
 
-    @FXML
+
     protected void NaarVerhuur() throws IOException {
 
-        loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("verhuur-view.fxml"));
-
-        switcher = new SceneSwitcher();
-        switcher.setLoader(loader);
-        switcher.setNode(MedewerkersLabel);
-        switcher.PrepareStage();
-
+        setSceneSwitch("verhuur-view.fxml");
         //acces the controller and call a method
-        VerhuurController controller = loader.getController();
+        VerhuurController controller = switcher.getLoader().getController();
         controller.initialize(medewerker, productlist, Selected);
         controller.initLogin(loginInstance);
-
-        switcher.CallStage();
-
-
-
+        SwitchScenes();
     }
 
+
     private void NaarHoofdmenu() throws IOException {
-        switcher = new SceneSwitcher();
-        loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("hoofdmenu-view.fxml"));
 
-        switcher.setLoader(loader);
-        switcher.setNode(MedewerkersLabel);
-        switcher.PrepareStage();
-
+        setSceneSwitch("hoofdmenu-view.fxml");
         //acces the controller and call a method
-        HoofdmenuController controller = loader.getController();
+        HoofdmenuController controller = switcher.getLoader().getController();
         controller.initialize(medewerker, productlist);
         controller.initLogin(loginInstance);
+        SwitchScenes();
+    }
 
-        switcher.CallStage();
 
+    private void setSceneSwitch(String fxmlPath) throws IOException {
+        switcher.PrepareScene(fxmlPath, MedewerkersLabel);
+    }
+
+    private void SwitchScenes(){
+        switcher.SwitchToScene();
     }
 
 

@@ -21,7 +21,7 @@ public class HoofdmenuController {
 
 
     public void initialize(Medewerker medewerker, ProductList productlist){
-        SceneSwitch = new SceneSwitcher();
+        SceneSwitch = new currentSceneSwitcher();
         this.medewerker = medewerker;
         this.productlist = productlist;
         initLabel();
@@ -60,7 +60,7 @@ public class HoofdmenuController {
 
     private void NaarOverzicht() throws IOException {
         setSceneSwitch("overzicht-view.fxml");
-        OverzichtController controller = loader.getController();
+        OverzichtController controller = SceneSwitch.getLoader().getController();
         controller.initialize(medewerker, productlist);
         controller.initLogin(loginInstance);
         SwitchScenes();
@@ -69,7 +69,7 @@ public class HoofdmenuController {
 
     private void NaarBeheer() throws IOException {
         setSceneSwitch("beheer-view.fxml");
-        BeheerController controller = loader.getController();
+        BeheerController controller = SceneSwitch.getLoader().getController();
         controller.initialize(medewerker, productlist);
         controller.initLogin(loginInstance);
         SwitchScenes();
@@ -77,15 +77,19 @@ public class HoofdmenuController {
 
 
     private void setSceneSwitch(String fxmlPath) throws IOException {
-        loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(fxmlPath));
-        SceneSwitch.setLoader(loader);
-        SceneSwitch.setNode(MedewerkersLabel);
-        SceneSwitch.PrepareStage();
+        //SceneSwitcher switcher = new currentSceneSwitcher();
+        SceneSwitch.PrepareScene(fxmlPath, MedewerkersLabel);
+
+        //acces the controller and call a method
+//        HoofdmenuController controller = switcher.getLoader().getController();
+//        controller.initialize(medewerker, productlist);
+//        controller.initLogin(loginInstance);
+
+        //switcher.SwitchToScene();
     }
 
     private void SwitchScenes(){
-        SceneSwitch.CallStage();
+        SceneSwitch.SwitchToScene();
     }
 
 

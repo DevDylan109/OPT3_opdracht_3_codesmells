@@ -17,8 +17,6 @@ public class BeheerController {
     private Medewerker medewerker;
     private ProductList productList;
     private Product product;
-    private FXMLLoader loader;
-    private SceneSwitcher switcher;
     private Login loginInstance;
     private FactoryList factoryList;
 
@@ -77,20 +75,14 @@ public class BeheerController {
     }
 
     private void NaarHoofdmenu() throws IOException {
-        switcher = new SceneSwitcher();
-        loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("hoofdmenu-view.fxml"));
-
-        switcher.setLoader(loader);
-        switcher.setNode(addProductBtn);
-        switcher.PrepareStage();
+        SceneSwitcher switcher = new currentSceneSwitcher();
+        switcher.PrepareScene("hoofdmenu-view.fxml", addProductBtn);
 
         //acces the controller and call a method
-        HoofdmenuController controller = loader.getController();
+        HoofdmenuController controller = switcher.getLoader().getController();
         controller.initialize(medewerker, productList);
         controller.initLogin(loginInstance);
 
-        switcher.CallStage();
-
+        switcher.SwitchToScene();
     }
 }

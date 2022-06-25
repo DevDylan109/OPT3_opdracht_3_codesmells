@@ -14,8 +14,7 @@ public class VerhuurController {
     private Huurinfo huurinfo;
     private int dagen;
     private Klant klant;
-    private FXMLLoader loader;
-    private SceneSwitcher switcher;
+    //private SceneSwitcher switcher;
     private Login loginInstance;
 
     @FXML
@@ -41,7 +40,7 @@ public class VerhuurController {
         this.medewerker = medewerker;
         this.productList = productlist;
         this.product = product;
-        this.switcher = new SceneSwitcher();
+        //this.switcher = new SceneSwitcher();
 
         initHuurinfo();
         setDetailsArea();
@@ -126,20 +125,13 @@ public class VerhuurController {
     }
 
     private void NaarOverzicht() throws IOException {
-        loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("overzicht-view.fxml"));
-
-        switcher.setLoader(loader);
-        switcher.setNode(VerzekerBtn);
-        switcher.PrepareStage();
-
+        SceneSwitcher switcher = new currentSceneSwitcher();
+        switcher.PrepareScene("overzicht-view.fxml", VerzekerBtn);
         //acces the controller and call a method
-        OverzichtController controller = loader.getController();
+        OverzichtController controller = switcher.getLoader().getController();
         controller.initialize(medewerker, productList);
         controller.initLogin(loginInstance);
-        switcher.CallStage();
-
-
+        switcher.SwitchToScene();
     }
 
     private void setRetourBtnVisible(boolean beslissing){

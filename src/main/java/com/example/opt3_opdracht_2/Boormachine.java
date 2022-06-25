@@ -58,13 +58,13 @@ public class Boormachine extends Product {
 
     @Override
     public void berekenHuurprijs() {
-        double prijs = 1 * 5;
+        double prijs = 5;
         setPrijsPerDag(prijs);
     }
 
     @Override
     public void berekenVerzekering() {
-        double prijs = 1 * 1;
+        double prijs = 1;
         setPrijsPerDag(getPrijsPerDag() + prijs);
     }
 

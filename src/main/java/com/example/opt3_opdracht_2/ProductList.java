@@ -8,11 +8,10 @@ import java.util.ArrayList;
 public class ProductList extends Observable{
 
     private ObservableList<Product> ProductList = FXCollections.observableArrayList();
-    private Repository Repo;
 
     public ProductList(){
-        Repo = new Repository();
-        setAllProducts(Repo.getProducts());
+        Repository repo = new Repository();
+        setAllProducts(repo.getProducts());
     }
 
     public void setAllProducts(ArrayList<Product> productList) {

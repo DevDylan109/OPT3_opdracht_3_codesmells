@@ -17,10 +17,7 @@ public class Login {
 
     private void IsAlIngelogd(String GEBRUIKERSNAAM){
         for(Medewerker IngelogdeMedewerker : IngelogdeMedewerkers){
-            if(IngelogdeMedewerker == null){
-                setAlreadyLoggedIn(false);
-            }
-            else if(IngelogdeMedewerker.getGebruikersnaam().equals(GEBRUIKERSNAAM)){
+            if(IngelogdeMedewerker.getGebruikersnaam().equals(GEBRUIKERSNAAM)){
                 setAlreadyLoggedIn(true);
                 break;
             }
@@ -49,7 +46,7 @@ public class Login {
         }
         return AutoriserendeMedewerker;
     }
-
+    
     private void setAlreadyLoggedIn(boolean beslissing){
         isAlreadyLoggedIn = beslissing;
     }
