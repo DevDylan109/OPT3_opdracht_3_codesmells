@@ -22,6 +22,7 @@ public abstract class SceneSwitcher {
         setScene();
         prepareStage();
     }
+
     private void setLoader(String fxmlpath) throws IOException {
         this.loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(fxmlpath));

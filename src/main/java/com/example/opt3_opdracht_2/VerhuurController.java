@@ -2,6 +2,7 @@ package com.example.opt3_opdracht_2;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 
 import java.io.IOException;
@@ -37,36 +38,34 @@ public class VerhuurController {
     private Button VerhuurBtn;
 
     public void initialize(Medewerker medewerker, ProductList productlist, Product product) {
+        this.product = product;
         this.medewerker = medewerker;
         this.productList = productlist;
-        this.product = product;
-        //this.switcher = new SceneSwitcher();
 
         initHuurinfo();
         setDetailsArea();
         showVerhuurArea();
         setMedewerkersLabel();
-
-
         checkIfVerhuurd();
     }
 
     private void checkIfVerhuurd() {
         if(product.getStatus().equals("verhuurd")) {
-            setRetourBtnVisible(true);
-            setVerhuurBtnVisible(false);
-            setVerzekerBtnVisible(false);
+            NodeVisibility(RetourBtn, true);
+            NodeVisibility(VerhuurBtn, false);
+            NodeVisibility(VerzekerBtn, false);
         }
         else{
-            setRetourBtnVisible(false);
-            setVerhuurBtnVisible(true);
-            setVerzekerBtnVisible(true);
+            NodeVisibility(RetourBtn, false);
+            NodeVisibility(VerhuurBtn, true);
+            NodeVisibility(VerzekerBtn, true);
         }
     }
 
     public void initLogin(Login login){
         this.loginInstance = login;
     }
+
 
     private void setMedewerkersLabel(){
         String Text = medewerker.getNaam();
@@ -96,11 +95,13 @@ public class VerhuurController {
         String status = product.getStatus();
 
         if(status.equals("verhuurd")){
-            VerhuurArea.setVisible(true);
+            //VerhuurArea.setVisible(true);
+            NodeVisibility(VerhuurArea, true);
             setVerhuurArea();
         }
         else{
-            VerhuurArea.setVisible(false);
+            //VerhuurArea.setVisible(false);
+            NodeVisibility(VerhuurArea, false);
         }
     }
 
@@ -121,8 +122,9 @@ public class VerhuurController {
         product.getHuurgegevens().resetInfo();
         setProductList();
         NaarOverzicht();
-        setRetourBtnVisible(false);
+        NodeVisibility(RetourBtn, false);
     }
+
 
     private void NaarOverzicht() throws IOException {
         SceneSwitcher switcher = new currentSceneSwitcher();
@@ -134,14 +136,9 @@ public class VerhuurController {
         switcher.SwitchToScene();
     }
 
-    private void setRetourBtnVisible(boolean beslissing){
-        RetourBtn.setVisible(beslissing);
-    }
-    private void setVerhuurBtnVisible(boolean  beslissing){
-        VerhuurBtn.setVisible(beslissing);
-    }
-    private void setVerzekerBtnVisible(boolean beslissing){
-        VerzekerBtn.setVisible(beslissing);
+
+    private void NodeVisibility(Node node, boolean beslissing){
+        node.setVisible(beslissing);
     }
 
     @FXML
@@ -152,18 +149,23 @@ public class VerhuurController {
         klant = new Klant(naam, achternaam);
         dagen = Integer.parseInt(DagenField.getText());
 
+        UpdateProductList();
+        setTextOfAreas();
 
+        NodeVisibility(RetourBtn, true);
+        NodeVisibility(VerhuurBtn, false);
+        NodeVisibility(VerzekerBtn, false);
+    }
 
+    private void UpdateProductList(){
         setHuurinfo();
         setProduct();
         setProductList();
+    }
 
+    private void setTextOfAreas(){
         setDetailsArea();
         showVerhuurArea();
-        setRetourBtnVisible(true);
-        setVerhuurBtnVisible(false);
-        setVerzekerBtnVisible(false);
-
     }
 
     @FXML
@@ -175,9 +177,5 @@ public class VerhuurController {
     protected void OnRetourneerBtnClick() throws IOException {
         Retourneer();
     }
-
-
-
-
 
 }

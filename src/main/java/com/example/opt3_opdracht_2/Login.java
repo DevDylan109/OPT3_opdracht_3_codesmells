@@ -50,9 +50,7 @@ public class Login {
     private void setAlreadyLoggedIn(boolean beslissing){
         isAlreadyLoggedIn = beslissing;
     }
-//    public Medewerker getHuidigeMedewerker() {
-//        return HuidigeMedewerker;
-//    }
+
 
     public void LogUit(Medewerker medewerker) {
         setAlreadyLoggedIn(false);

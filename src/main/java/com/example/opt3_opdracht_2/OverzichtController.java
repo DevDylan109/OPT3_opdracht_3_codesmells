@@ -12,7 +12,7 @@ import java.io.IOException;
 public class OverzichtController implements Observer {
 
     private SceneSwitcher switcher;
-    private FXMLLoader loader;
+    //private FXMLLoader loader;
     private Medewerker medewerker;
     private ProductList productlist;
     private Product Selected;

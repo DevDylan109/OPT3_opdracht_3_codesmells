@@ -57,7 +57,7 @@ public class PersonenAuto extends Product {
 
     @Override
     public void berekenHuurprijs() {
-        double prijs = 1 * 50;
+        double prijs = 50;
         setPrijsPerDag(prijs);
     }
 

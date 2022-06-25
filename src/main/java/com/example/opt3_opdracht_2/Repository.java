@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Repository {
     ArrayList<Medewerker> Medewerkers = new ArrayList<>();
     ArrayList<Product> Products = new ArrayList<>();
-    FactoryList productfactories = new FactoryList();
+   // FactoryList productfactories = new FactoryList();
 
     public Repository(){
         initalizeMedewerkers();
@@ -22,6 +22,7 @@ public class Repository {
     }
 
     private void initializeProducts(){
+        FactoryList productfactories = new FactoryList();
 
         ArrayList<ProductFactory> FactoryList;
         FactoryList = productfactories.getFactoryList();

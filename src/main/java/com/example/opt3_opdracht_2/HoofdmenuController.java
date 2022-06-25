@@ -10,7 +10,7 @@ import java.io.IOException;
 public class HoofdmenuController {
 
     private Medewerker medewerker;
-    private FXMLLoader loader;
+    //private FXMLLoader loader;
     private SceneSwitcher SceneSwitch;
     private ProductList productlist;
     private Login loginInstance;
@@ -77,15 +77,7 @@ public class HoofdmenuController {
 
 
     private void setSceneSwitch(String fxmlPath) throws IOException {
-        //SceneSwitcher switcher = new currentSceneSwitcher();
         SceneSwitch.PrepareScene(fxmlPath, MedewerkersLabel);
-
-        //acces the controller and call a method
-//        HoofdmenuController controller = switcher.getLoader().getController();
-//        controller.initialize(medewerker, productlist);
-//        controller.initLogin(loginInstance);
-
-        //switcher.SwitchToScene();
     }
 
     private void SwitchScenes(){
