@@ -31,10 +31,10 @@ public class BeheerController {
     @FXML
     private TableColumn<ProductFactory, String> Soort;
 
-    protected void initialize(Medewerker medewerker, ProductList productList){
+    protected void initialize(Data data){
         factoryList = new FactoryList();
-        this.medewerker = medewerker;
-        this.productList = productList;
+        this.medewerker = data.getMedewerker();
+        this.productList = data.getProductList();
         setLabel();
         setFactoryView();
     }
@@ -80,7 +80,7 @@ public class BeheerController {
 
         //acces the controller and call a method
         HoofdmenuController controller = switcher.getLoader().getController();
-        controller.initialize(medewerker, productList);
+        controller.initialize(new Data(medewerker, productList));
         controller.initLogin(loginInstance);
 
         switcher.SwitchToScene();

@@ -92,7 +92,7 @@ public class OverzichtController implements Observer {
         setSceneSwitch("verhuur-view.fxml");
         //acces the controller and call a method
         VerhuurController controller = switcher.getLoader().getController();
-        controller.initialize(medewerker, productlist, Selected);
+        controller.initialize(new Data(medewerker, productlist), Selected);
         controller.initLogin(loginInstance);
         SwitchScenes();
     }
@@ -103,7 +103,7 @@ public class OverzichtController implements Observer {
         setSceneSwitch("hoofdmenu-view.fxml");
         //acces the controller and call a method
         HoofdmenuController controller = switcher.getLoader().getController();
-        controller.initialize(medewerker, productlist);
+        controller.initialize(new Data(medewerker, productlist));
         controller.initLogin(loginInstance);
         SwitchScenes();
     }

@@ -13,12 +13,16 @@ public class Repository {
     }
 
     private void initalizeMedewerkers (){
-        Medewerker john = new Medewerker("John", "John123", "password");
-        Medewerker Kyle = new Medewerker("Kyle", "Kyle123", "password");
-        Medewerker Dylan = new Medewerker("Dylan", "Dylan123", "password");
+        Medewerker john = new Medewerker("John");
+        john.setGebruikersnaam("John123");
+        john.setWachtwoord("password");
+
+        Medewerker Kyle = new Medewerker("Kyle");
+        Kyle.setGebruikersnaam("Kyle123");
+        Kyle.setWachtwoord("password");
+
         Medewerkers.add(john);
         Medewerkers.add(Kyle);
-        Medewerkers.add(Dylan);
     }
 
     private void initializeProducts(){

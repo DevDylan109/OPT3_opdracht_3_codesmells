@@ -37,10 +37,10 @@ public class VerhuurController {
     @FXML
     private Button VerhuurBtn;
 
-    public void initialize(Medewerker medewerker, ProductList productlist, Product product) {
+    public void initialize(Data data, Product product) {
         this.product = product;
-        this.medewerker = medewerker;
-        this.productList = productlist;
+        this.medewerker = data.getMedewerker();
+        this.productList = data.getProductList();
 
         initHuurinfo();
         setDetailsArea();

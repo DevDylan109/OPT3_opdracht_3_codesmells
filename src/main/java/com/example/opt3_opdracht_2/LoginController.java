@@ -55,7 +55,7 @@ public class LoginController {
 
         //acces the controller and call a method
         HoofdmenuController controller = switcher.getLoader().getController();
-        controller.initialize(medewerker, productlist);
+        controller.initialize(new Data(medewerker, productlist));
         controller.initLogin(login);
 
         switcher.SwitchToScene();

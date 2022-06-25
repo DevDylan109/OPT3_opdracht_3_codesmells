@@ -5,10 +5,17 @@ public class Medewerker {
     private String gebruikersnaam;
     private String wachtwoord;
 
-    public Medewerker(String naam, String gebruikersnaam, String wachtwoord) {
+    public Medewerker(String naam) {
         this.naam = naam;
-        this.gebruikersnaam = gebruikersnaam;
+    }
+
+
+    public void setWachtwoord(String wachtwoord) {
         this.wachtwoord = wachtwoord;
+    }
+
+    public void setGebruikersnaam(String gebruikersnaam) {
+        this.gebruikersnaam = gebruikersnaam;
     }
 
     public String getNaam() {

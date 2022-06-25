@@ -20,10 +20,10 @@ public class HoofdmenuController {
 
 
 
-    public void initialize(Medewerker medewerker, ProductList productlist){
+    public void initialize(Data data){
         SceneSwitch = new currentSceneSwitcher();
-        this.medewerker = medewerker;
-        this.productlist = productlist;
+        this.medewerker = data.getMedewerker();
+        this.productlist = data.getProductList();
         initLabel();
     }
 
@@ -70,7 +70,7 @@ public class HoofdmenuController {
     private void NaarBeheer() throws IOException {
         setSceneSwitch("beheer-view.fxml");
         BeheerController controller = SceneSwitch.getLoader().getController();
-        controller.initialize(medewerker, productlist);
+        controller.initialize(new Data(medewerker, productlist));
         controller.initLogin(loginInstance);
         SwitchScenes();
     }
