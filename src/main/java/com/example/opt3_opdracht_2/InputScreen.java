@@ -61,9 +61,6 @@ public class InputScreen {
         return button;
     }
 
-//    private void printIndex(Node node){
-//        System.out.println(vBox.getChildren().indexOf(node));
-//    }
 
     public Node getNode(String Id){
         Node node = null;
