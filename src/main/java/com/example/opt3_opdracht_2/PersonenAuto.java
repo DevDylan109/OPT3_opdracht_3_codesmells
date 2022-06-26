@@ -1,6 +1,7 @@
 package com.example.opt3_opdracht_2;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,42 +18,79 @@ public class PersonenAuto extends Product {
         super(naam, beschrijving);
     }
 
+//    @Override
+//    public void drawInputScreen() {
+//        AnchorPane rootPane = new AnchorPane();
+//        Scene scene = new Scene(rootPane, 320, 240);
+//        Stage stage = new Stage();
+//
+//        VBox vBox = new VBox();
+//        rootPane.getChildren().add(vBox);
+//
+//        TextField MerkField = new TextField();
+//        MerkField.setPromptText("Merk");
+//
+//        TextField GewichtField = new TextField();
+//        GewichtField.setPromptText("Gewicht");
+//
+//        TextField BeschrijvingField = new TextField();
+//        BeschrijvingField.setPromptText("Beschrijving");
+//
+//        vBox.getChildren().add(MerkField);
+//        vBox.getChildren().add(GewichtField);
+//        vBox.getChildren().add(BeschrijvingField);
+//
+//        Button button = new Button ("setText");
+//        button.setOnAction (new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//                merk = ((TextField) vBox.getChildren().get(0)).getText();
+//                gewicht = Integer.parseInt(((TextField) vBox.getChildren().get(1)).getText());
+//                setBeschrijving(((TextField) vBox.getChildren().get(2)).getText());
+//                stage.close();
+//            }
+//        });
+//        vBox.getChildren().add(button);
+//        stage.setTitle("OPT3");
+//        stage.setScene(scene);
+//        stage.show();
+
+
+//    }
+
     @Override
     public void drawInputScreen() {
-        AnchorPane rootPane = new AnchorPane();
-        Scene scene = new Scene(rootPane, 320, 240);
-        Stage stage = new Stage();
+        setInputScreen();
+        setScreenAction();
+        getInputScreen().showStage();
+    }
 
-        VBox vBox = new VBox();
-        rootPane.getChildren().add(vBox);
+    private void setInputScreen(){
+        getInputScreen().createRootPane();
+        getInputScreen().createButton("Voer PersonenAuto in");
+        addTextField("merk");
+        addTextField("gewicht");
+        addTextField("beschrijving");
+    }
 
-        TextField MerkField = new TextField();
-        MerkField.setPromptText("Merk");
-
-        TextField GewichtField = new TextField();
-        GewichtField.setPromptText("Gewicht");
-
-        TextField BeschrijvingField = new TextField();
-        BeschrijvingField.setPromptText("Beschrijving");
-
-        vBox.getChildren().add(MerkField);
-        vBox.getChildren().add(GewichtField);
-        vBox.getChildren().add(BeschrijvingField);
-
-        Button button = new Button ("setText");
-        button.setOnAction (new EventHandler<ActionEvent>() {
+    private void setScreenAction(){
+        Button b = getInputScreen().getButton("Voer PersonenAuto in");
+        b.setOnMouseClicked(new EventHandler() {
             @Override
-            public void handle(ActionEvent event) {
-                merk = ((TextField) vBox.getChildren().get(0)).getText();
-                gewicht = Integer.parseInt(((TextField) vBox.getChildren().get(1)).getText());
-                setBeschrijving(((TextField) vBox.getChildren().get(2)).getText());
-                stage.close();
+            public void handle(Event event) {
+                String txt1 = getInputScreen().getTextField("merk").getText();
+                String txt2 = getInputScreen().getTextField("gewicht").getText();
+                String txt3 = getInputScreen().getTextField("beschrijving").getText();
+                merk = txt1;
+                gewicht = Integer.parseInt((txt2));
+                setBeschrijving((txt3));
+                getInputScreen().getStage().close();
             }
         });
-        vBox.getChildren().add(button);
-        stage.setTitle("OPT3");
-        stage.setScene(scene);
-        stage.show();
+    }
+
+    private void addTextField(String text){
+        getInputScreen().createTextField(text);
     }
 
     @Override

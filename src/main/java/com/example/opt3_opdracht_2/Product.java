@@ -7,12 +7,14 @@ public abstract class Product {
     private double prijsPerDag;
 
     private Huurinfo huurinformatie;
+    private InputScreen inputScreen;
 
     public Product(String naam, String beschrijving) {
         this.naam = naam;
         this.status = "op voorraad";
         this.beschrijving = beschrijving;
         huurinformatie = new Huurinfo();
+        inputScreen = new InputScreen();
     }
 
     public abstract void drawInputScreen();
@@ -48,6 +50,10 @@ public abstract class Product {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public InputScreen getInputScreen() {
+        return inputScreen;
     }
 
     //template method

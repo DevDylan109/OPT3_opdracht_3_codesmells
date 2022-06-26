@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 public class VrachtAuto extends Product {
     private int gewicht;
     private int laadvermogen;
-    private InputScreen inputScreen;
 
 
     public VrachtAuto(String naam, String beschrijving) {
@@ -24,34 +23,37 @@ public class VrachtAuto extends Product {
 
     @Override
     public void drawInputScreen() {
-        inputScreen = new InputScreen();
         setInputScreen();
         setScreenAction();
-        inputScreen.showStage();
+        getInputScreen().showStage();
     }
 
     private void setInputScreen(){
-        inputScreen.createRootPane();
-        inputScreen.createTextField("gewicht");
-        inputScreen.createTextField("laadvermogen");
-        inputScreen.createTextField("beschrijving");
-        inputScreen.createButton("Voer VrachtAuto in");
+        getInputScreen().createRootPane();
+        getInputScreen().createButton("Voer VrachtAuto in");
+        addTextField("gewicht");
+        addTextField("laadvermogen");
+        addTextField("beschrijving");
     }
 
     private void setScreenAction(){
-        Button b = inputScreen.getButton("Voer VrachtAuto in");
+        Button b = getInputScreen().getButton("Voer VrachtAuto in");
         b.setOnMouseClicked(new EventHandler() {
             @Override
             public void handle(Event event) {
-                String txt1 = inputScreen.getTextField("gewicht").getText();
-                String txt2 = inputScreen.getTextField("laadvermogen").getText();
-                String txt3 = inputScreen.getTextField("beschrijving").getText();
+                String txt1 = getInputScreen().getTextField("gewicht").getText();
+                String txt2 = getInputScreen().getTextField("laadvermogen").getText();
+                String txt3 = getInputScreen().getTextField("beschrijving").getText();
                 gewicht = Integer.parseInt((txt1));
                 laadvermogen = Integer.parseInt((txt2));
                 setBeschrijving((txt3));
-                inputScreen.getStage().close();
+                getInputScreen().getStage().close();
             }
         });
+    }
+
+    private void addTextField(String text){
+        getInputScreen().createTextField(text);
     }
 
     @Override
