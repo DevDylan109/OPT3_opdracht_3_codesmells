@@ -8,9 +8,7 @@ public class Data {
     private Product product;
     private Login login;
 
-    public Data(Medewerker medewerker, ProductList productList) {
-        this.medewerker = medewerker;
-        this.productList = productList;
+    public Data() {
     }
 
     public void setLogin(Login login) {
@@ -33,7 +31,15 @@ public class Data {
         return medewerker;
     }
 
+    public void setMedewerker(Medewerker medewerker) {
+        this.medewerker = medewerker;
+    }
+
     public ProductList getProductList() {
         return productList;
+    }
+
+    public void setProductList(ProductList productList) {
+        this.productList = productList;
     }
 }
