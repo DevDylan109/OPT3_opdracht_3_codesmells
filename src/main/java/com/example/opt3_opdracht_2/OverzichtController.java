@@ -17,6 +17,7 @@ public class OverzichtController implements Observer {
     private ProductList productlist;
     private Product Selected;
     private Login loginInstance;
+    private Data data;
     @FXML
     private Label MedewerkersLabel;
 
@@ -32,17 +33,19 @@ public class OverzichtController implements Observer {
 
     protected void initialize(Data data){
         this.switcher = new currentSceneSwitcher();
+        this.data = data;
         this.medewerker = data.getMedewerker();
         this.productlist = data.getProductList();
+        this.loginInstance = data.getLogin();
         productlist.addObserver(this);
         setMedewerkersLabel();
         initProductView();
         setColumns();
     }
 
-    public void initLogin(Login login){
-        this.loginInstance = login;
-    }
+//    public void initLogin(Login login){
+//        this.loginInstance = login;
+//    }
 
     private void setMedewerkersLabel(){
         String Text = medewerker.getNaam();
@@ -92,8 +95,8 @@ public class OverzichtController implements Observer {
         setSceneSwitch("verhuur-view.fxml");
         //acces the controller and call a method
         VerhuurController controller = switcher.getLoader().getController();
-        controller.initialize(new Data(medewerker, productlist), Selected);
-        controller.initLogin(loginInstance);
+        controller.initialize(data, Selected);
+        //controller.initLogin(loginInstance);
         SwitchScenes();
     }
 
@@ -103,8 +106,8 @@ public class OverzichtController implements Observer {
         setSceneSwitch("hoofdmenu-view.fxml");
         //acces the controller and call a method
         HoofdmenuController controller = switcher.getLoader().getController();
-        controller.initialize(new Data(medewerker, productlist));
-        controller.initLogin(loginInstance);
+        controller.initialize(data);
+        //controller.initLogin(loginInstance);
         SwitchScenes();
     }
 

@@ -19,6 +19,7 @@ public class BeheerController {
     private Product product;
     private Login loginInstance;
     private FactoryList factoryList;
+    private Data data;
 
     @FXML
     private Button createProductBtn;
@@ -33,15 +34,17 @@ public class BeheerController {
 
     protected void initialize(Data data){
         factoryList = new FactoryList();
+        this.data = data;
         this.medewerker = data.getMedewerker();
         this.productList = data.getProductList();
+        this.loginInstance = data.getLogin();
         setLabel();
         setFactoryView();
     }
 
-    public void initLogin(Login login){
-        this.loginInstance = login;
-    }
+//    public void initLogin(Login login){
+//        this.loginInstance = login;
+//    }
 
     private void setLabel(){
         MedewerkersLabel.setText("Beheerder: " + medewerker.getNaam());
@@ -81,8 +84,8 @@ public class BeheerController {
 
         //acces the controller and call a method
         HoofdmenuController controller = switcher.getLoader().getController();
-        controller.initialize(new Data(medewerker, productList));
-        controller.initLogin(loginInstance);
+        controller.initialize(data);
+       // controller.initLogin(loginInstance);
 
         switcher.SwitchToScene();
     }

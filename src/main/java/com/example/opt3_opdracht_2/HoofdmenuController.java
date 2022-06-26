@@ -14,6 +14,7 @@ public class HoofdmenuController {
     private SceneSwitcher SceneSwitch;
     private ProductList productlist;
     private Login loginInstance;
+    private Data data;
 
     @FXML
     private Label MedewerkersLabel;
@@ -22,6 +23,8 @@ public class HoofdmenuController {
 
     public void initialize(Data data){
         SceneSwitch = new currentSceneSwitcher();
+        this.data = data;
+        this.loginInstance = data.getLogin();
         this.medewerker = data.getMedewerker();
         this.productlist = data.getProductList();
         initLabel();
@@ -33,9 +36,9 @@ public class HoofdmenuController {
         MedewerkersLabel.setText("Welcome: " + medewerker.getNaam());
     }
 
-    public void initLogin(Login login){
-        this.loginInstance = login;
-    }
+//    public void initLogin(Login login){
+//        this.loginInstance = login;
+//    }
 
     private void updateLoginInstance(){
         //Verwijder de ingelogde user uit de login instance.
@@ -61,8 +64,8 @@ public class HoofdmenuController {
     private void NaarOverzicht() throws IOException {
         setSceneSwitch("overzicht-view.fxml");
         OverzichtController controller = SceneSwitch.getLoader().getController();
-        controller.initialize(new Data(medewerker, productlist));
-        controller.initLogin(loginInstance);
+        controller.initialize(data);
+        //controller.initLogin(loginInstance);
         SwitchScenes();
     }
 
@@ -70,8 +73,8 @@ public class HoofdmenuController {
     private void NaarBeheer() throws IOException {
         setSceneSwitch("beheer-view.fxml");
         BeheerController controller = SceneSwitch.getLoader().getController();
-        controller.initialize(new Data(medewerker, productlist));
-        controller.initLogin(loginInstance);
+        controller.initialize(data);
+       // controller.initLogin(loginInstance);
         SwitchScenes();
     }
 

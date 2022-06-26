@@ -51,12 +51,14 @@ public class LoginController {
 
     private void switchToScene2() throws IOException {
         SceneSwitcher switcher = new NewSceneSwitcher();
+        Data data = new Data(medewerker, productlist);
+        data.setLogin(login);
         switcher.PrepareScene("hoofdmenu-view.fxml", Wachtwoord);
 
         //acces the controller and call a method
         HoofdmenuController controller = switcher.getLoader().getController();
-        controller.initialize(new Data(medewerker, productlist));
-        controller.initLogin(login);
+        controller.initialize(data);
+        //controller.initLogin(login);
 
         switcher.SwitchToScene();
 

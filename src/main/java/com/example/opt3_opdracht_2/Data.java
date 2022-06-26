@@ -6,10 +6,19 @@ public class Data {
     private ProductList productList;
 
     private Product product;
+    private Login login;
 
     public Data(Medewerker medewerker, ProductList productList) {
         this.medewerker = medewerker;
         this.productList = productList;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
+
+    public Login getLogin() {
+        return login;
     }
 
     public void setProduct(Product product) {

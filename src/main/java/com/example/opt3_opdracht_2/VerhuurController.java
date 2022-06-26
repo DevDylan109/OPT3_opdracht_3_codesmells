@@ -17,6 +17,7 @@ public class VerhuurController {
     private Klant klant;
     //private SceneSwitcher switcher;
     private Login loginInstance;
+    private Data data;
 
     @FXML
     private TextArea DetailsArea;
@@ -39,8 +40,10 @@ public class VerhuurController {
 
     public void initialize(Data data, Product product) {
         this.product = product;
+        this.data = data;
         this.medewerker = data.getMedewerker();
         this.productList = data.getProductList();
+        this.loginInstance = data.getLogin();
 
         initHuurinfo();
         setDetailsArea();
@@ -66,9 +69,9 @@ public class VerhuurController {
         node.setVisible(beslissing);
     }
 
-    public void initLogin(Login login){
-        this.loginInstance = login;
-    }
+//    public void initLogin(Login login){
+//        this.loginInstance = login;
+//    }
 
 
     private void setMedewerkersLabel(){
@@ -133,8 +136,8 @@ public class VerhuurController {
         switcher.PrepareScene("overzicht-view.fxml", VerzekerBtn);
         //acces the controller and call a method
         OverzichtController controller = switcher.getLoader().getController();
-        controller.initialize(new Data(medewerker, productList));
-        controller.initLogin(loginInstance);
+        controller.initialize(data);
+        //controller.initLogin(loginInstance);
         switcher.SwitchToScene();
     }
 
