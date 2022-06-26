@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 public class VrachtAuto extends Product {
     private int gewicht;
     private int laadvermogen;
+    private InputScreen inputScreen;
 
 
     public VrachtAuto(String naam, String beschrijving) {
@@ -23,23 +24,34 @@ public class VrachtAuto extends Product {
 
     @Override
     public void drawInputScreen() {
-        InputScreen inputScreen = new InputScreen();
+        inputScreen = new InputScreen();
+        setInputScreen();
+        setScreenAction();
+        inputScreen.showStage();
+    }
+
+    private void setInputScreen(){
         inputScreen.createRootPane();
         inputScreen.createTextField("gewicht");
         inputScreen.createTextField("laadvermogen");
         inputScreen.createTextField("beschrijving");
         inputScreen.createButton("Voer VrachtAuto in");
+    }
+
+    private void setScreenAction(){
         Button b = inputScreen.getButton("Voer VrachtAuto in");
         b.setOnMouseClicked(new EventHandler() {
             @Override
             public void handle(Event event) {
-                gewicht = Integer.parseInt(( inputScreen.getTextField("gewicht")).getText());
-                laadvermogen = Integer.parseInt(( inputScreen.getTextField("laadvermogen")).getText());
-                setBeschrijving(( inputScreen.getTextField("beschrijving")).getText());
+                String txt1 = inputScreen.getTextField("gewicht").getText();
+                String txt2 = inputScreen.getTextField("laadvermogen").getText();
+                String txt3 = inputScreen.getTextField("beschrijving").getText();
+                gewicht = Integer.parseInt((txt1));
+                laadvermogen = Integer.parseInt((txt2));
+                setBeschrijving((txt3));
                 inputScreen.getStage().close();
             }
         });
-        inputScreen.showStage();
     }
 
     @Override
