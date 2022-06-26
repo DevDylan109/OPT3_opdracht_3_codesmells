@@ -62,6 +62,10 @@ public class VerhuurController {
         }
     }
 
+    private void NodeVisibility(Node node, boolean beslissing){
+        node.setVisible(beslissing);
+    }
+
     public void initLogin(Login login){
         this.loginInstance = login;
     }
@@ -95,12 +99,10 @@ public class VerhuurController {
         String status = product.getStatus();
 
         if(status.equals("verhuurd")){
-            //VerhuurArea.setVisible(true);
             NodeVisibility(VerhuurArea, true);
             setVerhuurArea();
         }
         else{
-            //VerhuurArea.setVisible(false);
             NodeVisibility(VerhuurArea, false);
         }
     }
@@ -131,15 +133,11 @@ public class VerhuurController {
         switcher.PrepareScene("overzicht-view.fxml", VerzekerBtn);
         //acces the controller and call a method
         OverzichtController controller = switcher.getLoader().getController();
-        controller.initialize(medewerker, productList);
+        controller.initialize(new Data(medewerker, productList));
         controller.initLogin(loginInstance);
         switcher.SwitchToScene();
     }
 
-
-    private void NodeVisibility(Node node, boolean beslissing){
-        node.setVisible(beslissing);
-    }
 
     @FXML
     protected void OnVerhuurBtnClick(){

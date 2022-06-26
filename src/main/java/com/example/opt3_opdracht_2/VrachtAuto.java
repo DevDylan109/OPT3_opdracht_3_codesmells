@@ -1,7 +1,9 @@
 package com.example.opt3_opdracht_2;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -21,40 +23,23 @@ public class VrachtAuto extends Product {
 
     @Override
     public void drawInputScreen() {
-        AnchorPane rootPane = new AnchorPane();
-        Scene scene = new Scene(rootPane, 320, 240);
-        Stage stage = new Stage();
-
-        VBox vBox = new VBox();
-        rootPane.getChildren().add(vBox);
-
-        TextField gewichtField = new TextField();
-        gewichtField.setPromptText("gewicht");
-
-        TextField laadvermogenField = new TextField();
-        laadvermogenField.setPromptText("laadvermogen");
-
-        TextField beschrijvingField = new TextField();
-        beschrijvingField.setPromptText("beschrijving");
-
-        vBox.getChildren().add(gewichtField);
-        vBox.getChildren().add(laadvermogenField);
-        vBox.getChildren().add(beschrijvingField);
-
-        Button button = new Button ("setText");
-        button.setOnAction (new EventHandler<ActionEvent>() {
+        InputScreen inputScreen = new InputScreen();
+        inputScreen.createRootPane();
+        inputScreen.createTextField("gewicht");
+        inputScreen.createTextField("laadvermogen");
+        inputScreen.createTextField("beschrijving");
+        inputScreen.createButton("Voer VrachtAuto in");
+        Button b = inputScreen.getButton("Voer VrachtAuto in");
+        b.setOnMouseClicked(new EventHandler() {
             @Override
-            public void handle(ActionEvent event) {
-                gewicht = Integer.parseInt(((TextField) vBox.getChildren().get(0)).getText());
-                laadvermogen = Integer.parseInt(((TextField) vBox.getChildren().get(1)).getText());
-                setBeschrijving(((TextField) vBox.getChildren().get(2)).getText());
-                stage.close();
+            public void handle(Event event) {
+                gewicht = Integer.parseInt(( inputScreen.getTextField("gewicht")).getText());
+                laadvermogen = Integer.parseInt(( inputScreen.getTextField("laadvermogen")).getText());
+                setBeschrijving(( inputScreen.getTextField("beschrijving")).getText());
+                inputScreen.getStage().close();
             }
         });
-        vBox.getChildren().add(button);
-        stage.setTitle("OPT3");
-        stage.setScene(scene);
-        stage.show();
+        inputScreen.showStage();
     }
 
     @Override

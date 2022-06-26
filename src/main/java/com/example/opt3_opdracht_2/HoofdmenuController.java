@@ -61,7 +61,7 @@ public class HoofdmenuController {
     private void NaarOverzicht() throws IOException {
         setSceneSwitch("overzicht-view.fxml");
         OverzichtController controller = SceneSwitch.getLoader().getController();
-        controller.initialize(medewerker, productlist);
+        controller.initialize(new Data(medewerker, productlist));
         controller.initLogin(loginInstance);
         SwitchScenes();
     }

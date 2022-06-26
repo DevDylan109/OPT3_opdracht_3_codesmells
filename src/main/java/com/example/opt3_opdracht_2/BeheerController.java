@@ -49,7 +49,8 @@ public class BeheerController {
 
     private void setFactoryView(){
         //Factories factories = new Factories();
-        ObservableList<ProductFactory> factoryList = FXCollections.observableArrayList();
+        ObservableList<ProductFactory> factoryList;
+        factoryList = FXCollections.observableArrayList();
         factoryList.setAll(this.factoryList.getFactoryList());
         FactoryView.setItems(factoryList);
         Soort.setCellValueFactory(new PropertyValueFactory<>("FactoryName"));

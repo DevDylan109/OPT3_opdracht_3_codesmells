@@ -30,10 +30,10 @@ public class OverzichtController implements Observer {
     private TableColumn<Product, String> StatusColumn;
 
 
-    protected void initialize(Medewerker medewerker, ProductList productlist){
+    protected void initialize(Data data){
         this.switcher = new currentSceneSwitcher();
-        this.medewerker = medewerker;
-        this.productlist = productlist;
+        this.medewerker = data.getMedewerker();
+        this.productlist = data.getProductList();
         productlist.addObserver(this);
         setMedewerkersLabel();
         initProductView();
