@@ -38,9 +38,9 @@ public class VerhuurController {
     @FXML
     private Button VerhuurBtn;
 
-    public void initialize(Data data, Product product) {
-        this.product = product;
+    public void initialize(Data data) {
         this.data = data;
+        this.product = data.getProduct();
         this.medewerker = data.getMedewerker();
         this.productList = data.getProductList();
         this.loginInstance = data.getLogin();

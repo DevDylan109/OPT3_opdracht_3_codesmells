@@ -42,9 +42,6 @@ public class BeheerController {
         setFactoryView();
     }
 
-//    public void initLogin(Login login){
-//        this.loginInstance = login;
-//    }
 
     private void setLabel(){
         MedewerkersLabel.setText("Beheerder: " + medewerker.getNaam());
@@ -85,8 +82,8 @@ public class BeheerController {
         //acces the controller and call a method
         HoofdmenuController controller = switcher.getLoader().getController();
         controller.initialize(data);
-       // controller.initLogin(loginInstance);
-
         switcher.SwitchToScene();
     }
+    
+
 }

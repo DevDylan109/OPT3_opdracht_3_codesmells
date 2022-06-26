@@ -91,11 +91,11 @@ public class OverzichtController implements Observer {
 
 
     protected void NaarVerhuur() throws IOException {
-
+        data.setProduct(Selected);
         setSceneSwitch("verhuur-view.fxml");
         //acces the controller and call a method
         VerhuurController controller = switcher.getLoader().getController();
-        controller.initialize(data, Selected);
+        controller.initialize(data);
         //controller.initLogin(loginInstance);
         SwitchScenes();
     }
