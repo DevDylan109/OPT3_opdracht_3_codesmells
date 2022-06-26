@@ -21,43 +21,31 @@ public class InputScreen {
 
     //create rootpane
     public void createRootPane() {
-        //create rootpane
         AnchorPane rootPane = new AnchorPane();
-        //create scene
         scene = new Scene(rootPane, 320, 240);
-        //create stage
         stage = new Stage();
-        //create vbox
         vBox = new VBox();
         rootPane.getChildren().add(vBox);
     }
 
+
     //create textfield and set text based on parameter, and add to vBox
     public TextField createTextField(String text) {
-        //create textfield
         TextField textField = new TextField();
-        //set text
         textField.setPromptText(text);
-        //set an Id for the textfield
         textField.setId(text);
-        //add textfield to vBox
         vBox.getChildren().add(textField);
-        //add textfield to textfields
         textfields.add(textField);
-        //return textField object
         return textField;
     }
 
+
     //create button and set text based on parameter, and add to vBox
     public Button createButton(String text) {
-        //create button
         Button button = new Button(text);
         button.setId(text);
-        //add button to vBox
         vBox.getChildren().add(button);
-        //add button to buttons
         buttons.add(button);
-        //return button object
         return button;
     }
 
@@ -71,6 +59,7 @@ public class InputScreen {
         return node;
     }
 
+
     public TextField getTextField(String Id){
         TextField textField = null;
         for(TextField textfield : textfields){
@@ -80,6 +69,7 @@ public class InputScreen {
         }
         return textField;
     }
+
 
     public Button getButton(String Id){
         Button button = null;
@@ -98,6 +88,7 @@ public class InputScreen {
         stage.setScene(scene);
         stage.show();
     }
+
 
     public Stage getStage(){
         return stage;
