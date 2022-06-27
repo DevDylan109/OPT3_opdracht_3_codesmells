@@ -29,16 +29,15 @@ public class Login {
 
     public Medewerker Autoriseer(String GEBRUIKERSNAAM, String WACHTWOORD){
         IsAlIngelogd(GEBRUIKERSNAAM);
-        String VerwachteGebruikersnaam;
-        String VerwachteWachtwoord;
         Medewerker AutoriserendeMedewerker = null;
 
         if(!isAlreadyLoggedIn){ //Bij True, return een Medewerker, Bij false return null
             for(Medewerker Medewerker : MedewerkersList){
-                VerwachteGebruikersnaam = Medewerker.getGebruikersnaam();
-                VerwachteWachtwoord = Medewerker.getWachtwoord();
-
-                if(VerwachteGebruikersnaam.equals(GEBRUIKERSNAAM) && VerwachteWachtwoord.equals(WACHTWOORD)){
+                String Gebruiker = Medewerker.getGebruikersnaam();
+                String Wachtwoord = Medewerker.getWachtwoord();
+                boolean EqualsNaam = Gebruiker.equals(GEBRUIKERSNAAM);
+                boolean EqualsWW = Wachtwoord.equals(WACHTWOORD);
+                if(EqualsNaam && EqualsWW){
                     AutoriserendeMedewerker = Medewerker;
                     IngelogdeMedewerkers.add(Medewerker);
                 }

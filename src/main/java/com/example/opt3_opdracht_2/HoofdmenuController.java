@@ -65,7 +65,6 @@ public class HoofdmenuController {
         setSceneSwitch("overzicht-view.fxml");
         OverzichtController controller = SceneSwitch.getLoader().getController();
         controller.initialize(data);
-        //controller.initLogin(loginInstance);
         SwitchScenes();
     }
 
@@ -74,7 +73,6 @@ public class HoofdmenuController {
         setSceneSwitch("beheer-view.fxml");
         BeheerController controller = SceneSwitch.getLoader().getController();
         controller.initialize(data);
-       // controller.initLogin(loginInstance);
         SwitchScenes();
     }
 

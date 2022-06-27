@@ -22,7 +22,6 @@ public class LoginController {
     @FXML
     protected void initialize(){
         login = new Login();
-        //switcher = new SceneSwitcher();
         productlist = new ProductList();
 
     }
